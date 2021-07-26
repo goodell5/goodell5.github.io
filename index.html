@@ -2,8 +2,9 @@
 <meta charset="utf-8">
 <html>
     <title>Narrative Visualization</title>
-
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script type="text/javascript"></script>
     <style> 
         circle {
                 fill: lightblue; 
@@ -12,54 +13,53 @@
     </style>
 
     <body onload='init()'>
-    <div id="my_dataviz"></div>
-    <p> Testing TestingTestingTestingTesting</p>
-    <svg width=300 height=300></svg>
-    
+        <div id="my_dataviz"></div>
+        <p> Testing TestingTestingTestingTesting</p>
+        <svg width=300 height=300></svg>
+        
 
-    <script>
-        const data = await d3.csv("https://goodell5.github.io/Obesity.csv")
+        <script>
+            const data = await d3.csv("https://goodell5.github.io/Obesity.csv")
 
-        var width = 200,
-        height = 200,
-        margin = 50;
+            var width = 200,
+            height = 200,
+            margin = 50;
 
-        // var xScale = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
-        var x = d3.scaleLinear().domain([14,61]).range([height,0]);
-        var y = d3.scaleLinear().domain([1.4,2.0]).range([height,0]);
+            // var xScale = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
+            var x = d3.scaleLinear().domain([14,61]).range([height,0]);
+            var y = d3.scaleLinear().domain([1.4,2.0]).range([height,0]);
 
-        // Create margins
-        d3.select("svg")
-        .attr("width", width + 2 * margin)
-        .attr("height", height + 2 * margin)
-        .append("g")
-        .attr("transform", "translate("+margin+","+margin+")")
-        .selectAll("dot")
-        .data(data)
-        .enter()
-        .append("circle")
-        .attr("cx",function(d,i) {return x(d.Age);})
-        .attr("cy",function(d,i) {return y(d.Height);})
-        .attr("r", function(d,i) {return (2 + 0); });
+            // Create margins
+            d3.select("svg")
+            .attr("width", width + 2 * margin)
+            .attr("height", height + 2 * margin)
+            .append("g")
+            .attr("transform", "translate("+margin+","+margin+")")
+            .selectAll("dot")
+            .data(data)
+            .enter()
+            .append("circle")
+            .attr("cx",function(d,i) {return x(d.Age);})
+            .attr("cy",function(d,i) {return y(d.Height);})
+            .attr("r", function(d,i) {return (2 + 0); });
 
-        // .attr("r", function(d,i) {return (2 + parseInt(d.EngineCylinders)); });
+            // .attr("r", function(d,i) {return (2 + parseInt(d.EngineCylinders)); });
 
-        // Create format for tick marks
-        var formatSciNotation = d3.format("~s");
+            // Create format for tick marks
+            var formatSciNotation = d3.format("~s");
 
-        // Create Y-Axis
-        d3.select("svg")
-        .append("g")
-        .attr("transform", "translate("+margin+","+margin+")")
-        .call(d3.axisLeft(y).tickValues([1.4,1.6,1.8,2.0]).tickFormat(formatSciNotation));
+            // Create Y-Axis
+            d3.select("svg")
+            .append("g")
+            .attr("transform", "translate("+margin+","+margin+")")
+            .call(d3.axisLeft(y).tickValues([1.4,1.6,1.8,2.0]).tickFormat(formatSciNotation));
 
-        // Create X-Axis
-        d3.select("svg")
-        .append("g")
-        .attr("transform", "translate("+margin+","+(height+margin)+")")
-        .call(d3.axisBottom(x).tickValues([10,20,30,40,50,60,70]).tickFormat(formatSciNotation));
+            // Create X-Axis
+            d3.select("svg")
+            .append("g")
+            .attr("transform", "translate("+margin+","+(height+margin)+")")
+            .call(d3.axisBottom(x).tickValues([10,20,30,40,50,60,70]).tickFormat(formatSciNotation));
 
-
-    </script>
+        </script>
     </body>
 </html>
