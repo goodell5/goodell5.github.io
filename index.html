@@ -19,48 +19,49 @@
 
         
         <script>
-            async function init()
-            const data = await d3.csv("https://goodell5.github.io/Obesity.csv")
+            async function init() {
 
-            var width = 200,
-            height = 200,
-            margin = 50;
+                const data = await d3.csv("https://goodell5.github.io/Obesity.csv")
 
-            // var xScale = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
-            var x = d3.scaleLinear().domain([14,61]).range([height,0]);
-            var y = d3.scaleLinear().domain([1.4,2.0]).range([height,0]);
+                var width = 200,
+                height = 200,
+                margin = 50;
 
-            // Create margins
-            d3.select("svg")
-            .attr("width", width + 2 * margin)
-            .attr("height", height + 2 * margin)
-            .append("g")
-            .attr("transform", "translate("+margin+","+margin+")")
-            .selectAll("dot")
-            .data(data)
-            .enter()
-            .append("circle")
-            .attr("cx",function(d,i) {return x(d.Age);})
-            .attr("cy",function(d,i) {return y(d.Height);})
-            .attr("r", function(d,i) {return (2 + 0); });
+                // var xScale = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
+                var x = d3.scaleLinear().domain([14,61]).range([height,0]);
+                var y = d3.scaleLinear().domain([1.4,2.0]).range([height,0]);
 
-            // .attr("r", function(d,i) {return (2 + parseInt(d.EngineCylinders)); });
+                // Create margins
+                d3.select("svg")
+                .attr("width", width + 2 * margin)
+                .attr("height", height + 2 * margin)
+                .append("g")
+                .attr("transform", "translate("+margin+","+margin+")")
+                .selectAll("dot")
+                .data(data)
+                .enter()
+                .append("circle")
+                .attr("cx",function(d,i) {return x(d.Age);})
+                .attr("cy",function(d,i) {return y(d.Height);})
+                .attr("r", function(d,i) {return (2 + 0); });
 
-            // Create format for tick marks
-            var formatSciNotation = d3.format("~s");
+                // .attr("r", function(d,i) {return (2 + parseInt(d.EngineCylinders)); });
 
-            // Create Y-Axis
-            d3.select("svg")
-            .append("g")
-            .attr("transform", "translate("+margin+","+margin+")")
-            .call(d3.axisLeft(y).tickValues([1.4,1.6,1.8,2.0]).tickFormat(formatSciNotation));
+                // Create format for tick marks
+                var formatSciNotation = d3.format("~s");
 
-            // Create X-Axis
-            d3.select("svg")
-            .append("g")
-            .attr("transform", "translate("+margin+","+(height+margin)+")")
-            .call(d3.axisBottom(x).tickValues([10,20,30,40,50,60,70]).tickFormat(formatSciNotation));
+                // Create Y-Axis
+                d3.select("svg")
+                .append("g")
+                .attr("transform", "translate("+margin+","+margin+")")
+                .call(d3.axisLeft(y).tickValues([1.4,1.6,1.8,2.0]).tickFormat(formatSciNotation));
 
+                // Create X-Axis
+                d3.select("svg")
+                .append("g")
+                .attr("transform", "translate("+margin+","+(height+margin)+")")
+                .call(d3.axisBottom(x).tickValues([10,20,30,40,50,60,70]).tickFormat(formatSciNotation));
+            }
         </script>
     </body>
 </html>
