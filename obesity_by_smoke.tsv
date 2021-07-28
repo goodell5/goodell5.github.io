@@ -1,0 +1,15 @@
+obesity_level	smoke	count
+Insufficient_Weight	no	274
+Insufficient_Weight	yes	13
+Normal_Weight	no	287
+Normal_Weight	yes	3
+Obesity_Type_I	no	285
+Obesity_Type_I	yes	5
+Obesity_Type_II	no	345
+Obesity_Type_II	yes	6
+Overweight_Level_I	no	271
+Overweight_Level_I	yes	1
+Overweight_Level_II	no	282
+Overweight_Level_II	yes	15
+Overweight_Level_III	no	323
+Overweight_Level_III	yes	1
