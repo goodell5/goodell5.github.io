@@ -1,4 +1,4 @@
-obesity_level,no_exercise,1_2_days,2_4_days,4_5_days
+obesity_level,no_exercise,1-2_days,2-4_days,4-5_days
 Insufficient_Weight,80,97,61,41
 Normal_Weight,40,44,22,10
 Obesity_Type_I,61,46,10,7
