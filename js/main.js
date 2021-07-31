@@ -236,7 +236,7 @@ function setupSVG() {
                 x: width * 0.2,
                 y: height * 0.2,
                 // other coords
-                dy: 150,
+                dy: 50,
                 dx: 550
             }]
         }
