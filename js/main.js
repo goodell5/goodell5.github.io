@@ -158,19 +158,8 @@ function setupSVG() {
         var formatSuffixDecimal2 = d3.format(".2f");
 
         // original
-        // var tooltip = d3.select("#scene-1-viz")
-        //     .append("div")
-        //     .style("position","fixed")
-        //     .style("opacity", 0)
-        //     .attr("class", "tooltip")
-        //     .style("background-color", "white")
-        //     .style("border", "solid")
-        //     .style("border-width", "1px")
-        //     .style("border-radius", "5px")
-        //     .style("padding", "10px")
-
-        var tooltip = svg.append("g")
-            // .append("div")
+        var tooltip = d3.select("#my_dataviz")
+            .append("div")
             .style("position","fixed")
             .style("opacity", 0)
             .attr("class", "tooltip")
@@ -180,6 +169,16 @@ function setupSVG() {
             .style("border-radius", "5px")
             .style("padding", "10px")
 
+        // var tooltip = svg.append("g")
+        //     // .append("div")
+        //     .style("position","fixed")
+        //     .style("opacity", 0)
+        //     .attr("class", "tooltip")
+        //     .style("background-color", "white")
+        //     .style("border", "solid")
+        //     .style("border-width", "1px")
+        //     .style("border-radius", "5px")
+        //     .style("padding", "10px")
 
         // Three function that change the tooltip when user hover / move / leave a cell
         var mouseover = function(d) {
