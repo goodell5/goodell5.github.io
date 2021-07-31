@@ -5,15 +5,6 @@ body {
     background: rgb(49, 53, 55);
 }
 
-/* X and Y axis */
-/* .axis {
-    font: 20px sans-serif;
-} */
-
-.axisText {
-    font: 20px sans-serif;
-}
-
 p, h1, h2, h3, h4 {
     color:rgb(206, 206, 206);
     margin-left: 80px;
@@ -37,6 +28,28 @@ text {
 
 .domain {
     stroke:white;
+}
+
+/* X and Y axis */
+/* .axis {
+    font: 20px sans-serif;
+} */
+
+.axisText {
+    font: 20px sans-serif;
+}
+
+
+/* Annotations */
+
+.subject {
+    stroke-width: 5;
+    stroke-dasharray: 10px;
+    fill: none
+}
+
+.annotation-note-title {
+    fill:lightgrey;
 }
 
 /* Page buttons */
