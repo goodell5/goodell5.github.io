@@ -228,7 +228,7 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.78,
+                    width: width * 0.8,
                     height: height * 0.45,
                 },
                 color: ["white"],
@@ -237,7 +237,7 @@ function setupSVG() {
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
-                dx: 550
+                dx: 450
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
