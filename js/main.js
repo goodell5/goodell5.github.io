@@ -228,7 +228,7 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.825,
+                    width: width * 0.83,
                     height: height * 0.4,
                 },
                 color: ["white"],
