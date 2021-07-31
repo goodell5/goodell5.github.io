@@ -1,67 +1,260 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <title>Narrative Visualization</title>
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <script src="https://d3js.org/d3.v5.min.js"></script>
-    <style> 
-        circle {
-                fill: lightblue; 
-                stroke:transparent;
-            } 
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">    
+</head>
 
-    <body onload='init()'>
-        <div id="my_dataviz"></div>
-        <p> Testing TestingTestingTestingTesting</p>
-        <svg width=300 height=300></svg>
-        <script type="text/javascript" src="https://goodell5.github.io/shapes.js"></script>
-
-        
-        <script>
-            async function init() {
-
-                const data = await d3.csv("https://goodell5.github.io/Obesity.csv")
-
-                var width = 200,
-                height = 200,
-                margin = 50;
-
-                // var xScale = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,width]);
-                var x = d3.scaleLinear().domain([14,61]).range([height,0]);
-                var y = d3.scaleLinear().domain([1.4,2.0]).range([height,0]);
-
-                // Create margins
-                d3.select("svg")
-                .attr("width", width + 2 * margin)
-                .attr("height", height + 2 * margin)
-                .append("g")
-                .attr("transform", "translate("+margin+","+margin+")")
-                .selectAll("dot")
-                .data(data)
-                .enter()
-                .append("circle")
-                .attr("cx",function(d,i) {return x(d.Age);})
-                .attr("cy",function(d,i) {return y(d.Height);})
-                .attr("r", function(d,i) {return (2 + 0); });
-
-                // .attr("r", function(d,i) {return (2 + parseInt(d.EngineCylinders)); });
-
-                // Create format for tick marks
-                var formatSciNotation = d3.format("~s");
-
-                // Create Y-Axis
-                d3.select("svg")
-                .append("g")
-                .attr("transform", "translate("+margin+","+margin+")")
-                .call(d3.axisLeft(y).tickValues([1.4,1.6,1.8,2.0]).tickFormat(formatSciNotation));
-
-                // Create X-Axis
-                d3.select("svg")
-                .append("g")
-                .attr("transform", "translate("+margin+","+(height+margin)+")")
-                .call(d3.axisBottom(x).tickValues([10,20,30,40,50,60,70]).tickFormat(formatSciNotation));
-            }
-        </script>
+    <body onload="setupSVG('exercise')"">
+        <div id="app">
+            <div class="container" style="height:95%">
+                <h1>Obesity levels in individuals from Mexico, Peru and Colombia (2019)</h1>
+                <div id="scene-1" class="page">
+                    <div id="scene-1-desc" class="scene-description">
+                        <h3>Scene 1: Obesity Levels & Weekly Exercise Frequency</h3>
+                        <p>This dataset was provided by...</p>
+                        <p>Hover over an individual for more details.</p>
+                        <p>This scene is an overview of individuals' height vs. weight from Mexico, Peru and Colombia in a scatter plot. From this plot, there appears to be no obvious correlation between height and weight.</p>
+                        <p>Click on the button above the plot to navigate to the next scene, or click on an individual to proceed to next scene, according to their gender.</p>
+                    </div>
+                </div>
+                <br>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item prev"><a class="page-link" onclick="prevSlide()" tabindex="-1">Previous</a></li>
+                        <li class="page-item nonClick active"><a class="page-link" onclick="updateSVG('exercise')">Exercise</a></li>
+                        <li class="page-item nonClick"><a class="page-link" onclick="updateSVG('age')">Age</a></li>
+                        <li class="page-item nonClick"><a class="page-link" onclick="updateSVG('tech')">Tech</a></li>
+                        <li class="page-item next"><a class="page-link" onclick="nextSlide()">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-primary active" aria-current="page">Active link</a>
+                    <a href="#" class="btn btn-primary">Link</a>
+                    <a href="#" class="btn btn-primary">Link</a>
+                </div>
+                <div id="dataviz-wrapper">
+                    <div id="my_dataviz"></div>
+                </div>
+            </div>
+        </div>
     </body>
+
+            <svg width=400 height=400></svg>
+            <script id="scene-1">
+
+                async function loadAllData() {
+
+                    // set the dimensions and margins of the graph
+                    var margin = {top: 20, right: 20, bottom: 80, left: 100},
+                        width = 500 - margin.left - margin.right,
+                        height = 500 - margin.top - margin.bottom;
+
+                    // append the svg object to the body of the page
+                    var svg = d3.select("#scene-1-viz")
+                    .append("svg")
+                        .attr("id", "scene-1-svg")
+                        .attr("width", width + margin.left + margin.right)
+                        .attr("height", height + margin.top + margin.bottom)
+                    .append("g")
+                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                    
+                    // get the data
+                    const data = await d3.csv("https://goodell5.github.io/obesity_groups_tech.csv");
+                    const data_2 = await d3.csv("https://goodell5.github.io/Obesity.csv");
+                    
+                    // Format sig figs
+                    var formatSuffixDecimal2 = d3.format(".2f");
+
+                    // UNCOMMENT TO CREATE GROUPED .CSVs
+                    var obesity_levels = [],
+                        age_;
+                        data_2.map(function(d) {obesity_levels.push(d.NObeyesdad);})
+                    // console.log(obesity_levels)
+
+                    // Get counts of each obesity level in dataset
+                    const obesity_levels_counts = obesity_levels.reduce((acc, curr) => {
+                    const foundObject = acc.find(e => e.NObeyesdad === curr);
+                    if (foundObject) ++foundObject.count;
+                    else acc.push({
+                        NObeyesdad: curr,
+                        count: 1
+                    });
+                    return acc;
+                    }, []);
+
+                    // Filter rows by an obesity level
+                    var rows_by_obesity = data_2.filter(function(d){ return d.NObeyesdad == "Normal_Weight"})
+                    // console.log(rows_by_obesity)
+
+                    // set the color scale
+                    var obesity_counts = [],
+                        obesity_labels = [];
+                    obesity_levels_counts.map(function(d) {obesity_counts.push(d.count);})
+                    obesity_levels_counts.map(function(d) {obesity_labels.push(d.NObeyesdad);})
+
+                    // Filter rows by each obesity level
+                    var subset_obesity = new Array( );
+                    for (var i = 0; i < obesity_levels_counts.length; i++) {
+                        subset_obesity[i] = data_2.filter(function(d){ return d.NObeyesdad == obesity_labels[i]})
+                    }
+
+                    // Filter obesity levels by smoking (no, yes)
+                    var subset_obesity_by_smoke = new Array();      // dims: 7x2 (7 obesity levels, 2 levels of smoking)
+                    for (var i = 0; i < obesity_levels_counts.length; i++) {
+                        var smokers = new Array();
+                        smokers[0] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "no"}));
+                        smokers[1] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "yes"}));
+                        subset_obesity_by_smoke.push(smokers)
+                    }
+
+                    // Filter obesity levels by time using tech devices (0-2hrs, 3-5hrs, 5+ hrs)
+                    var subset_obesity_by_tech = new Array();      // dims: 7x3 (7 obesity levels, 3 levels of tech use)
+                    for (var i = 0; i < obesity_levels_counts.length; i++) {
+                        var tech = new Array();
+                        for (var j = 0; j < 3; j++) {
+                            tech[j] = new Array(subset_obesity[i].filter(function(d){ return d.TUE == j}));
+                        }
+                        subset_obesity_by_tech.push(tech)
+                    }
+                    console.log(subset_obesity_by_tech)
+                    console.log(obesity_levels_counts)
+
+                    // Filter obesity levels by alcohol consumption (no, sometimes, frequently, always)
+                    var subset_obesity_by_exer = new Array();      // dims: 7x4 (7 obesity levels, 4 levels of alcohol consumption)
+                    for (var i = 0; i < obesity_levels_counts.length; i++) {
+                        var exercise = new Array();
+                        for (var j = 0; j < 4; j++) {
+                            exercise[j] = new Array(subset_obesity[i].filter(function(d){ return d.FAF == j}));
+                        }
+                        subset_obesity_by_exer.push(exercise)
+                    }
+                    console.log(subset_obesity_by_exer)
+
+                    // List of subgroups = header of the csv files = soil condition here
+                    var subgroups = data.columns.slice(1)
+                    // List of groups = obesity levels here = value of the first column called group -> I show them on the X axis
+                    var groups = d3.map(data, function(d){return(d.obesity_level)}).keys()
+                    
+                    // Add X axis
+                    var x = d3.scaleBand()
+                        .domain(groups)
+                        .range([0, width])
+                        .padding([0.2])
+                    svg.append("g")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(d3.axisBottom(x).tickSizeOuter(0))
+                        .selectAll("text")
+                            .attr("transform", "translate(-10,0)rotate(-45)")
+                            .style("text-anchor", "end");
+
+                    // Add Y axis
+                    var y = d3.scaleLinear()
+                        .domain([0, 100])
+                        .range([ height, 0 ]);
+                    svg.append("g")
+                        .call(d3.axisLeft(y));
+
+                    // color palette = one color per subgroup
+                    var color = d3.scaleOrdinal()
+                        .domain(subgroups)
+                        .range(['#fe4644','#ff881a', '#33a3ff'])
+                    // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
+
+                    // Normalize the data -> sum of each group must be 100!
+                    // console.log(data)
+                    dataNormalized = []
+                    data.forEach(function(d){
+                        // Compute the total
+                        tot = 0
+                        for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
+                        // Now normalize
+                        for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
+                    })
+
+                    //stack the data? --> stack per subgroup
+                    var stackedData = d3.stack()
+                        .keys(subgroups)
+                        (data)
+
+                    // ----------------
+                    // Create a tooltip
+                    // ----------------
+                    var tooltip = d3.select("#scene-1-viz")
+                        .append("div")
+                        .style("position","fixed")
+                        .style("opacity", 0)
+                        .attr("class", "tooltip")
+                        .style("background-color", "white")
+                        .style("border", "solid")
+                        .style("border-width", "1px")
+                        .style("border-radius", "5px")
+                        .style("padding", "10px")
+
+                    // Three function that change the tooltip when user hover / move / leave a cell
+                    var mouseover = function(d) {
+                        var subgroupName = d3.select(this.parentNode).datum().key;
+                        var subgroupValue = d.data[subgroupName];
+                        tooltip
+                            .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                            .style("opacity", 1)
+                        // ----------------
+                        // Highlight a specific subgroup when hovered
+                        // ----------------
+                        // Reduce opacity of all rect to 0.2
+                        // d3.selectAll(".myRect").style("opacity", 0.2)
+                        // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
+                        // d3.selectAll("."+subgroupName)
+                        // .style("opacity", 1)
+                    }
+                    var mousemove = function(d) {
+                        tooltip
+                        .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                        .style("top", (d3.mouse(this)[1] +130) + "px")
+                    }
+                    var mouseleave = function(d) {
+                        tooltip
+                            .style("opacity", 0)
+                        // Back to normal opacity: 0.8
+                        // d3.selectAll(".myRect")
+                        //     .style("opacity",0.8)
+
+                    }
+
+                    // Show the bars
+                    svg.append("g")
+                        .selectAll("g")
+                        // Enter in the stack data = loop key per key = group per group
+                        .data(stackedData)
+                        .enter().append("g")
+                        .attr("fill", function(d) { return color(d.key); })
+                        .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
+                        .selectAll("rect")
+                        // enter a second time = loop subgroup per subgroup to add all rectangles
+                        .data(function(d) { return d; })
+                        .enter().append("rect")
+                            .attr("x", function(d) { return x(d.data.obesity_level); })
+                            .attr("y", function(d) { return y(d[1]); })
+                            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+                            .attr("width",x.bandwidth())
+                        .on("mouseover", mouseover)
+                        .on("mousemove", mousemove)
+                        .on("mouseleave", mouseleave)
+                }
+        
+    </script>
+<!-- Load d3.js -->
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
+<script src="/js/main.js"></script>
 </html>
