@@ -204,26 +204,10 @@ function setupSVG() {
         svg.selectAll(".annotation-group").remove()
 
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
-            // annotations = [{
-            //     note: {
-            //         label: "Lorem Ipsum. Lorem Ipsum",
-            //         title: "Exercise Annotation Title"
-            //     },
-            //     type: d3.annotationCalloutCircle,
-            //     subject: {
-            //         radius: 80, //circle radius
-            //         radiusPadding: 20, // white space around circle before connector
-            //     },
-            //     color: ["white"],
-            //     x: width * 0.2,
-            //     y: height * 0.4,
-            //     dy: -100,
-            //     dx: 150
-            // }]
             annotations = [{
                 note: {
                     label: "Lorem Ipsum. Lorem Ipsum",
-                    title: "Age Annotation Title"
+                    title: "Exercise Annotation Title"
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
@@ -237,7 +221,7 @@ function setupSVG() {
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
-                dx: 650
+                dx: 700
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
