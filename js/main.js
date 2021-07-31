@@ -227,15 +227,15 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
-                    // region of interest
+                    // ROI width/height
                     width: width * 0.85,
                     height: height * 0.25,
                 },
                 color: ["white"],
-                // text coords
-                x: width * 0.0225,
+                // ROI coords
+                x: width * 0.02,
                 // x: width * 0.1,
-                y: height * 0.2,
+                y: height * 0.1,
                 // other coords
                 dy: 50,
                 dx: 600
