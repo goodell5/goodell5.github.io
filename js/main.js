@@ -225,7 +225,7 @@ function setupSVG() {
                     width: width * 0.2,
                     height: height * 0.5,
                 },
-                color: ["grey"],
+                color: ["lightgrey"],
                 x: width * 0.81,
                 y: height * 0.1,
                 dy: 200,
@@ -235,6 +235,7 @@ function setupSVG() {
         else {
             annotations = [{
                 note: {
+                    color: "lightgrey",
                     label: "Lorem Ipsum. Lorem Ipsum",
                     title: "Tech Use Annotation Title"
                 },
@@ -243,7 +244,7 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                color: ["grey"],
+                color: ["lightgrey"],
                 x: width * 0.62,
                 y: height * 0.85,
                 dy: 0,
