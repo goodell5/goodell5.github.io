@@ -47,12 +47,12 @@ text {
     fill: none
 }
 
-.annotation-note-title {
+.annotation-note-title,.annotation-note-label {
     fill:white;
 }
-tspan {
+/* .annotation-note-label {
     fill:white;
-}
+} */
 
 /* Page buttons */
 .nonClick {
