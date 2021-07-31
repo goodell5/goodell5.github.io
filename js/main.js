@@ -207,7 +207,7 @@ function setupSVG() {
             annotations = [{
                 note: {
                     label: "As obesity level increases, amount of exercise decreases",
-                    title: "Weekly Exercise"
+                    title: "More Exercise, Less Obesity"
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
@@ -230,24 +230,6 @@ function setupSVG() {
                     label: "Lorem Ipsum. Lorem Ipsum",
                     title: "Age Annotation Title"
                 },
-                type: d3.annotationCalloutRect,
-                subject: {
-                    width: width * 0.5,
-                    height: height * 0.5,
-                },
-                color: ["white"],
-                x: width * 0.81,
-                y: height * 0.1,
-                dy: -120,
-                dx: 150
-            }]
-        }
-        else {
-            annotations = [{
-                note: {
-                    label: "Lorem Ipsum. Lorem Ipsum",
-                    title: "Tech Use Annotation Title"
-                },
                 type: d3.annotationCalloutCircle,
                 subject: {
                     radius: 80, // circle radius
@@ -258,6 +240,27 @@ function setupSVG() {
                 y: height * 0.85,
                 dy: 0,
                 dx: -150
+            }]
+        }
+        else {
+            annotations = [{
+                note: {
+                    label: "No. Tech use varies across all obesity levels",
+                    title: "Tech Leads to Obesity?"
+                },
+                type: d3.annotationCalloutRect,
+                subject: {
+                    // ROI width/height
+                    width: width * 0.83,
+                    height: height * 0.375,
+                },
+                color: ["white"],
+                // ROI coords
+                x: width * 0.015,
+                y: height * 0.015,
+                // label/text coords
+                dy: 250,
+                dx: 700
             }]
         }
         // Add annotation to the chart
