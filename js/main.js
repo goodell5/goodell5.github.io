@@ -193,7 +193,69 @@ function setupSVG() {
     }
     // NEEDS WORK
     function addAnnotations() {
+        svg.selectAll(".annotation-group").remove()
 
+        if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
+            annotations = [{
+                note: {
+                    label: "Lorem Ipsum. Lorem Ipsum",
+                    title: "Exercise Annotation Title"
+                },
+                type: d3.annotationCalloutCircle,
+                subject: {
+                    radius: 80, //circle radius
+                    radiusPadding: 20, // white space around circle before connector
+                },
+                color: ["white"],
+                x: width * 0.2,
+                y: height * 0.4,
+                dy: -100,
+                dx: 150
+            }]
+        }
+        else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
+            annotations = [{
+                note: {
+                    label: "Lorem Ipsum. Lorem Ipsum",
+                    title: "Age Annotation Title"
+                },
+                type: d3.annotationCalloutRect,
+                subject: {
+                    width: width * 0.2,
+                    height: height * 0.5,
+                },
+                color: ["white"],
+                x: width * 0.81,
+                y: height * 0.1,
+                dy: 200,
+                dx: 250
+            }]
+        }
+        else {
+            annotations = [{
+                note: {
+                    label: "Lorem Ipsum. Lorem Ipsum",
+                    title: "Tech Use Annotation Title"
+                },
+                type: d3.annotationCalloutCircle,
+                subject: {
+                    radius: 80, // circle radius
+                    radiusPadding: 20, // white space around circle befor connector
+                },
+                color: ["red"],
+                x: width * 0.62,
+                y: height * 0.85,
+                dy: 0,
+                dx: -150
+            }]
+        }
+        // Add annotation to the chart
+        const makeAnnotations = d3.annotations()
+            .annotations(annotations)
+
+        svg.append('g')
+        .attr('class', 'annotation-group')
+        .call(makeAnnotations)
     }
 
     loadAllData();
