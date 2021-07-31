@@ -5,19 +5,19 @@ body {
     background: rgb(49, 53, 55);
 }
 
-/* div {
-    max-width: 960px;
-} */
+/* X and Y axis */
+.axis {
+    font: 20px sans-serif;
+}
+
+.axisText {
+    font: 20px sans-serif;
+}
 
 p, h1, h2, h3, h4 {
     color:rgb(206, 206, 206);
     margin-left: 80px;
 }
-
-/* circle {
-    fill: blue; 
-    stroke:lightblue;
-}  */
 
 text {
     fill:white
@@ -34,14 +34,6 @@ text {
     border-left: 1px solid #CCCCCC;
     cursor: pointer;
 }
-
-.bubbles {
-    stroke-width: 2px;
-    stroke: white;
-  }
-  .bubbles:hover {
-    stroke: black;
-  }
 
 .domain {
     stroke:white;
