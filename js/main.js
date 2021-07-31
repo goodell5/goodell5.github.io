@@ -139,7 +139,7 @@ function setupSVG() {
         var mousemove = function(d) {
             tooltip
             .style("left", (d3.mouse(this)[0] + 450) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-            .style("top", (d3.mouse(this)[1] + 550) + "px")
+            .style("top", (d3.mouse(this)[1] + 130) + "px")
         }
         var mouseleave = function(d) {
             tooltip
