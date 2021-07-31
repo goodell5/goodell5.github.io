@@ -219,14 +219,14 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
-                    width: width * 0.5,
+                    width: width * 0.2,
                     height: height * 0.5,
                 },
                 color: ["white"],
-                x: width * 0.2,
-                y: height * 0.1,
-                dy: -120,
-                dx: 150
+                x: width * 0.5,
+                y: height * 0.5,
+                dy: 150,
+                dx: -150
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
@@ -237,14 +237,14 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
-                    width: width * 0.2,
+                    width: width * 0.5,
                     height: height * 0.5,
                 },
                 color: ["white"],
                 x: width * 0.81,
                 y: height * 0.1,
-                dy: 50,
-                dx: -50
+                dy: -120,
+                dx: 150
             }]
         }
         else {
