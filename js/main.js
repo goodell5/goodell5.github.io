@@ -250,7 +250,7 @@ function setupSVG() {
             }]
         }
         // Add annotation to the chart
-        const makeAnnotations = d3.annotations()
+        const makeAnnotations = d3.annotation()
             .annotations(annotations)
 
         svg.append('g')
