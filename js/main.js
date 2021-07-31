@@ -134,9 +134,17 @@ function setupSVG() {
         var mouseover = function(d) {
             var subgroupName = d3.select(this.parentNode).datum().key;
             var subgroupValue = d.data[subgroupName];
-            tooltip
+            if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
+                tooltip
+                .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                .style("opacity", 1)
+            }
+            else {
+                tooltip
                 .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
                 .style("opacity", 1)
+            }
+            
             // ----------------
             // Highlight a specific subgroup when hovered (BROKEN)
             // ----------------
@@ -219,14 +227,17 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
+                    // region of interest
                     width: width * 0.5,
                     height: height * 0.5,
                 },
                 color: ["white"],
+                // text coords
                 x: width * 0.2,
                 y: height * 0.3,
+                // other coords
                 dy: 150,
-                dx: 150
+                dx: 450
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
