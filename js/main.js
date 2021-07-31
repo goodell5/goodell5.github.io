@@ -55,7 +55,6 @@ function setupSVG() {
     }
 
     function plotStackedBar(data) {
-        addAnnotations();   // fix this function
 
         // List of subgroups = header of the csv files = soil condition here
         var subgroups = data.columns.slice(1)
@@ -180,6 +179,8 @@ function setupSVG() {
             .on("mouseover", mouseover)
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave)
+
+        addAnnotations();   // fix this function
     }
 
     // NEEDS WORK
@@ -242,7 +243,7 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                color: ["red"],
+                color: ["lightgray"],
                 x: width * 0.62,
                 y: height * 0.85,
                 dy: 0,
