@@ -262,7 +262,7 @@ function setupSVG() {
         }
         // Add annotation to the chart
         const makeAnnotations = d3.annotation()
-            .textWrap(280) // changes text wrap width
+            .textWrap(240) // changes text wrap width
             .annotations(annotations)
 
         svg.append('g')
