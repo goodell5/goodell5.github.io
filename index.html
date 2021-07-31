@@ -48,204 +48,204 @@
             <svg width=400 height=400></svg>
             <script id="scene-1">
 
-                async function loadAllData() {
+                // async function loadAllData() {
 
-                    // set the dimensions and margins of the graph
-                    var margin = {top: 20, right: 20, bottom: 80, left: 100},
-                        width = 500 - margin.left - margin.right,
-                        height = 500 - margin.top - margin.bottom;
+                //     // set the dimensions and margins of the graph
+                //     var margin = {top: 20, right: 20, bottom: 80, left: 100},
+                //         width = 500 - margin.left - margin.right,
+                //         height = 500 - margin.top - margin.bottom;
 
-                    // append the svg object to the body of the page
-                    var svg = d3.select("#scene-1-viz")
-                    .append("svg")
-                        .attr("id", "scene-1-svg")
-                        .attr("width", width + margin.left + margin.right)
-                        .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+                //     // append the svg object to the body of the page
+                //     var svg = d3.select("#scene-1-viz")
+                //     .append("svg")
+                //         .attr("id", "scene-1-svg")
+                //         .attr("width", width + margin.left + margin.right)
+                //         .attr("height", height + margin.top + margin.bottom)
+                //     .append("g")
+                //         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
                     
-                    // get the data
-                    const data = await d3.csv("https://goodell5.github.io/obesity_groups_tech.csv");
-                    const data_2 = await d3.csv("https://goodell5.github.io/Obesity.csv");
+                //     // get the data
+                //     const data = await d3.csv("https://goodell5.github.io/obesity_groups_tech.csv");
+                //     const data_2 = await d3.csv("https://goodell5.github.io/Obesity.csv");
                     
-                    // Format sig figs
-                    var formatSuffixDecimal2 = d3.format(".2f");
+                //     // Format sig figs
+                //     var formatSuffixDecimal2 = d3.format(".2f");
 
-                    // UNCOMMENT TO CREATE GROUPED .CSVs
-                    var obesity_levels = [],
-                        age_;
-                        data_2.map(function(d) {obesity_levels.push(d.NObeyesdad);})
-                    // console.log(obesity_levels)
+                //     // UNCOMMENT TO CREATE GROUPED .CSVs
+                //     var obesity_levels = [],
+                //         age_;
+                //         data_2.map(function(d) {obesity_levels.push(d.NObeyesdad);})
+                //     // console.log(obesity_levels)
 
-                    // Get counts of each obesity level in dataset
-                    const obesity_levels_counts = obesity_levels.reduce((acc, curr) => {
-                    const foundObject = acc.find(e => e.NObeyesdad === curr);
-                    if (foundObject) ++foundObject.count;
-                    else acc.push({
-                        NObeyesdad: curr,
-                        count: 1
-                    });
-                    return acc;
-                    }, []);
+                //     // Get counts of each obesity level in dataset
+                //     const obesity_levels_counts = obesity_levels.reduce((acc, curr) => {
+                //     const foundObject = acc.find(e => e.NObeyesdad === curr);
+                //     if (foundObject) ++foundObject.count;
+                //     else acc.push({
+                //         NObeyesdad: curr,
+                //         count: 1
+                //     });
+                //     return acc;
+                //     }, []);
 
-                    // Filter rows by an obesity level
-                    var rows_by_obesity = data_2.filter(function(d){ return d.NObeyesdad == "Normal_Weight"})
-                    // console.log(rows_by_obesity)
+                //     // Filter rows by an obesity level
+                //     var rows_by_obesity = data_2.filter(function(d){ return d.NObeyesdad == "Normal_Weight"})
+                //     // console.log(rows_by_obesity)
 
-                    // set the color scale
-                    var obesity_counts = [],
-                        obesity_labels = [];
-                    obesity_levels_counts.map(function(d) {obesity_counts.push(d.count);})
-                    obesity_levels_counts.map(function(d) {obesity_labels.push(d.NObeyesdad);})
+                //     // set the color scale
+                //     var obesity_counts = [],
+                //         obesity_labels = [];
+                //     obesity_levels_counts.map(function(d) {obesity_counts.push(d.count);})
+                //     obesity_levels_counts.map(function(d) {obesity_labels.push(d.NObeyesdad);})
 
-                    // Filter rows by each obesity level
-                    var subset_obesity = new Array( );
-                    for (var i = 0; i < obesity_levels_counts.length; i++) {
-                        subset_obesity[i] = data_2.filter(function(d){ return d.NObeyesdad == obesity_labels[i]})
-                    }
+                //     // Filter rows by each obesity level
+                //     var subset_obesity = new Array( );
+                //     for (var i = 0; i < obesity_levels_counts.length; i++) {
+                //         subset_obesity[i] = data_2.filter(function(d){ return d.NObeyesdad == obesity_labels[i]})
+                //     }
 
-                    // Filter obesity levels by smoking (no, yes)
-                    var subset_obesity_by_smoke = new Array();      // dims: 7x2 (7 obesity levels, 2 levels of smoking)
-                    for (var i = 0; i < obesity_levels_counts.length; i++) {
-                        var smokers = new Array();
-                        smokers[0] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "no"}));
-                        smokers[1] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "yes"}));
-                        subset_obesity_by_smoke.push(smokers)
-                    }
+                //     // Filter obesity levels by smoking (no, yes)
+                //     var subset_obesity_by_smoke = new Array();      // dims: 7x2 (7 obesity levels, 2 levels of smoking)
+                //     for (var i = 0; i < obesity_levels_counts.length; i++) {
+                //         var smokers = new Array();
+                //         smokers[0] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "no"}));
+                //         smokers[1] = new Array(subset_obesity[i].filter(function(d){ return d.SMOKE == "yes"}));
+                //         subset_obesity_by_smoke.push(smokers)
+                //     }
 
-                    // Filter obesity levels by time using tech devices (0-2hrs, 3-5hrs, 5+ hrs)
-                    var subset_obesity_by_tech = new Array();      // dims: 7x3 (7 obesity levels, 3 levels of tech use)
-                    for (var i = 0; i < obesity_levels_counts.length; i++) {
-                        var tech = new Array();
-                        for (var j = 0; j < 3; j++) {
-                            tech[j] = new Array(subset_obesity[i].filter(function(d){ return d.TUE == j}));
-                        }
-                        subset_obesity_by_tech.push(tech)
-                    }
-                    console.log(subset_obesity_by_tech)
-                    console.log(obesity_levels_counts)
+                //     // Filter obesity levels by time using tech devices (0-2hrs, 3-5hrs, 5+ hrs)
+                //     var subset_obesity_by_tech = new Array();      // dims: 7x3 (7 obesity levels, 3 levels of tech use)
+                //     for (var i = 0; i < obesity_levels_counts.length; i++) {
+                //         var tech = new Array();
+                //         for (var j = 0; j < 3; j++) {
+                //             tech[j] = new Array(subset_obesity[i].filter(function(d){ return d.TUE == j}));
+                //         }
+                //         subset_obesity_by_tech.push(tech)
+                //     }
+                //     console.log(subset_obesity_by_tech)
+                //     console.log(obesity_levels_counts)
 
-                    // Filter obesity levels by alcohol consumption (no, sometimes, frequently, always)
-                    var subset_obesity_by_exer = new Array();      // dims: 7x4 (7 obesity levels, 4 levels of alcohol consumption)
-                    for (var i = 0; i < obesity_levels_counts.length; i++) {
-                        var exercise = new Array();
-                        for (var j = 0; j < 4; j++) {
-                            exercise[j] = new Array(subset_obesity[i].filter(function(d){ return d.FAF == j}));
-                        }
-                        subset_obesity_by_exer.push(exercise)
-                    }
-                    console.log(subset_obesity_by_exer)
+                //     // Filter obesity levels by alcohol consumption (no, sometimes, frequently, always)
+                //     var subset_obesity_by_exer = new Array();      // dims: 7x4 (7 obesity levels, 4 levels of alcohol consumption)
+                //     for (var i = 0; i < obesity_levels_counts.length; i++) {
+                //         var exercise = new Array();
+                //         for (var j = 0; j < 4; j++) {
+                //             exercise[j] = new Array(subset_obesity[i].filter(function(d){ return d.FAF == j}));
+                //         }
+                //         subset_obesity_by_exer.push(exercise)
+                //     }
+                //     console.log(subset_obesity_by_exer)
 
-                    // List of subgroups = header of the csv files = soil condition here
-                    var subgroups = data.columns.slice(1)
-                    // List of groups = obesity levels here = value of the first column called group -> I show them on the X axis
-                    var groups = d3.map(data, function(d){return(d.obesity_level)}).keys()
+                //     // List of subgroups = header of the csv files = soil condition here
+                //     var subgroups = data.columns.slice(1)
+                //     // List of groups = obesity levels here = value of the first column called group -> I show them on the X axis
+                //     var groups = d3.map(data, function(d){return(d.obesity_level)}).keys()
                     
-                    // Add X axis
-                    var x = d3.scaleBand()
-                        .domain(groups)
-                        .range([0, width])
-                        .padding([0.2])
-                    svg.append("g")
-                        .attr("transform", "translate(0," + height + ")")
-                        .call(d3.axisBottom(x).tickSizeOuter(0))
-                        .selectAll("text")
-                            .attr("transform", "translate(-10,0)rotate(-45)")
-                            .style("text-anchor", "end");
+                //     // Add X axis
+                //     var x = d3.scaleBand()
+                //         .domain(groups)
+                //         .range([0, width])
+                //         .padding([0.2])
+                //     svg.append("g")
+                //         .attr("transform", "translate(0," + height + ")")
+                //         .call(d3.axisBottom(x).tickSizeOuter(0))
+                //         .selectAll("text")
+                //             .attr("transform", "translate(-10,0)rotate(-45)")
+                //             .style("text-anchor", "end");
 
-                    // Add Y axis
-                    var y = d3.scaleLinear()
-                        .domain([0, 100])
-                        .range([ height, 0 ]);
-                    svg.append("g")
-                        .call(d3.axisLeft(y));
+                //     // Add Y axis
+                //     var y = d3.scaleLinear()
+                //         .domain([0, 100])
+                //         .range([ height, 0 ]);
+                //     svg.append("g")
+                //         .call(d3.axisLeft(y));
 
-                    // color palette = one color per subgroup
-                    var color = d3.scaleOrdinal()
-                        .domain(subgroups)
-                        .range(['#fe4644','#ff881a', '#33a3ff'])
-                    // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
+                //     // color palette = one color per subgroup
+                //     var color = d3.scaleOrdinal()
+                //         .domain(subgroups)
+                //         .range(['#fe4644','#ff881a', '#33a3ff'])
+                //     // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
-                    // Normalize the data -> sum of each group must be 100!
-                    // console.log(data)
-                    dataNormalized = []
-                    data.forEach(function(d){
-                        // Compute the total
-                        tot = 0
-                        for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
-                        // Now normalize
-                        for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
-                    })
+                //     // Normalize the data -> sum of each group must be 100!
+                //     // console.log(data)
+                //     dataNormalized = []
+                //     data.forEach(function(d){
+                //         // Compute the total
+                //         tot = 0
+                //         for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
+                //         // Now normalize
+                //         for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
+                //     })
 
-                    //stack the data? --> stack per subgroup
-                    var stackedData = d3.stack()
-                        .keys(subgroups)
-                        (data)
+                //     //stack the data? --> stack per subgroup
+                //     var stackedData = d3.stack()
+                //         .keys(subgroups)
+                //         (data)
 
-                    // ----------------
-                    // Create a tooltip
-                    // ----------------
-                    var tooltip = d3.select("#scene-1-viz")
-                        .append("div")
-                        .style("position","fixed")
-                        .style("opacity", 0)
-                        .attr("class", "tooltip")
-                        .style("background-color", "white")
-                        .style("border", "solid")
-                        .style("border-width", "1px")
-                        .style("border-radius", "5px")
-                        .style("padding", "10px")
+                //     // ----------------
+                //     // Create a tooltip
+                //     // ----------------
+                //     var tooltip = d3.select("#scene-1-viz")
+                //         .append("div")
+                //         .style("position","fixed")
+                //         .style("opacity", 0)
+                //         .attr("class", "tooltip")
+                //         .style("background-color", "white")
+                //         .style("border", "solid")
+                //         .style("border-width", "1px")
+                //         .style("border-radius", "5px")
+                //         .style("padding", "10px")
 
-                    // Three function that change the tooltip when user hover / move / leave a cell
-                    var mouseover = function(d) {
-                        var subgroupName = d3.select(this.parentNode).datum().key;
-                        var subgroupValue = d.data[subgroupName];
-                        tooltip
-                            .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                            .style("opacity", 1)
-                        // ----------------
-                        // Highlight a specific subgroup when hovered
-                        // ----------------
-                        // Reduce opacity of all rect to 0.2
-                        // d3.selectAll(".myRect").style("opacity", 0.2)
-                        // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-                        // d3.selectAll("."+subgroupName)
-                        // .style("opacity", 1)
-                    }
-                    var mousemove = function(d) {
-                        tooltip
-                        .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-                        .style("top", (d3.mouse(this)[1] +130) + "px")
-                    }
-                    var mouseleave = function(d) {
-                        tooltip
-                            .style("opacity", 0)
-                        // Back to normal opacity: 0.8
-                        // d3.selectAll(".myRect")
-                        //     .style("opacity",0.8)
+                //     // Three function that change the tooltip when user hover / move / leave a cell
+                //     var mouseover = function(d) {
+                //         var subgroupName = d3.select(this.parentNode).datum().key;
+                //         var subgroupValue = d.data[subgroupName];
+                //         tooltip
+                //             .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                //             .style("opacity", 1)
+                //         // ----------------
+                //         // Highlight a specific subgroup when hovered
+                //         // ----------------
+                //         // Reduce opacity of all rect to 0.2
+                //         // d3.selectAll(".myRect").style("opacity", 0.2)
+                //         // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
+                //         // d3.selectAll("."+subgroupName)
+                //         // .style("opacity", 1)
+                //     }
+                //     var mousemove = function(d) {
+                //         tooltip
+                //         .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                //         .style("top", (d3.mouse(this)[1] +130) + "px")
+                //     }
+                //     var mouseleave = function(d) {
+                //         tooltip
+                //             .style("opacity", 0)
+                //         // Back to normal opacity: 0.8
+                //         // d3.selectAll(".myRect")
+                //         //     .style("opacity",0.8)
 
-                    }
+                //     }
 
-                    // Show the bars
-                    svg.append("g")
-                        .selectAll("g")
-                        // Enter in the stack data = loop key per key = group per group
-                        .data(stackedData)
-                        .enter().append("g")
-                        .attr("fill", function(d) { return color(d.key); })
-                        .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
-                        .selectAll("rect")
-                        // enter a second time = loop subgroup per subgroup to add all rectangles
-                        .data(function(d) { return d; })
-                        .enter().append("rect")
-                            .attr("x", function(d) { return x(d.data.obesity_level); })
-                            .attr("y", function(d) { return y(d[1]); })
-                            .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-                            .attr("width",x.bandwidth())
-                        .on("mouseover", mouseover)
-                        .on("mousemove", mousemove)
-                        .on("mouseleave", mouseleave)
-                }
+                //     // Show the bars
+                //     svg.append("g")
+                //         .selectAll("g")
+                //         // Enter in the stack data = loop key per key = group per group
+                //         .data(stackedData)
+                //         .enter().append("g")
+                //         .attr("fill", function(d) { return color(d.key); })
+                //         .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
+                //         .selectAll("rect")
+                //         // enter a second time = loop subgroup per subgroup to add all rectangles
+                //         .data(function(d) { return d; })
+                //         .enter().append("rect")
+                //             .attr("x", function(d) { return x(d.data.obesity_level); })
+                //             .attr("y", function(d) { return y(d[1]); })
+                //             .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+                //             .attr("width",x.bandwidth())
+                //         .on("mouseover", mouseover)
+                //         .on("mousemove", mousemove)
+                //         .on("mouseleave", mouseleave)
+                // }
         
     </script>
 <!-- Load d3.js -->
