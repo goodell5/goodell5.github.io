@@ -224,9 +224,9 @@ function setupSVG() {
                 },
                 color: ["white"],
                 x: width * 0.1,
-                y: height * 0.8,
+                y: height * 0.3,
                 dy: 150,
-                dx: -150
+                dx: 150
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
