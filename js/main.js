@@ -221,7 +221,7 @@ function setupSVG() {
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
-                dx: 700
+                dx: 670
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
@@ -245,14 +245,14 @@ function setupSVG() {
         else {
             annotations = [{
                 note: {
-                    label: "No. Tech use varies across all obesity levels",
+                    label: "Not quite. Tech use varies across all obesity levels",
                     title: "Tech Leads to Obesity?"
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
                     width: width * 0.83,
-                    height: height * 0.375,
+                    height: height * 0.5,
                 },
                 color: ["white"],
                 // ROI coords
@@ -260,12 +260,12 @@ function setupSVG() {
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
-                dx: 700
+                dx: 670
             }]
         }
         // Add annotation to the chart
         const makeAnnotations = d3.annotation()
-            .textWrap(240) // changes text wrap width
+            .textWrap(265) // changes text wrap width
             .annotations(annotations)
 
         svg.append('g')
