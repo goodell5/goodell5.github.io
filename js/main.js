@@ -233,7 +233,8 @@ function setupSVG() {
                 },
                 color: ["white"],
                 // text coords
-                x: width * 0.1,
+                x: 0,
+                // x: width * 0.1,
                 y: height * 0.2,
                 // other coords
                 dy: 50,
