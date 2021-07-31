@@ -103,100 +103,104 @@ function setupSVG() {
 
         // tooltipStackedBar();
 
-        // // TEST AS ITS OWN FUNCTION
-        // function tooltipStackedBar() {
-        //     // ----------------
-        //     // Create a tooltip
-        //     // ----------------
-        //     var tooltip = d3.select("#scene-1-viz")
-        //         .append("div")
-        //         .style("position","fixed")
-        //         .style("opacity", 0)
-        //         .attr("class", "tooltip")
-        //         .style("background-color", "white")
-        //         .style("border", "solid")
-        //         .style("border-width", "1px")
-        //         .style("border-radius", "5px")
-        //         .style("padding", "10px")
-
-        //     // Three function that change the tooltip when user hover / move / leave a cell
-        //     var mouseover = function(d) {
-        //         var subgroupName = d3.select(this.parentNode).datum().key;
-        //         var subgroupValue = d.data[subgroupName];
-        //         tooltip
-        //             .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-        //             .style("opacity", 1)
-        //         // ----------------
-        //         // Highlight a specific subgroup when hovered
-        //         // ----------------
-        //         // Reduce opacity of all rect to 0.2
-        //         // d3.selectAll(".myRect").style("opacity", 0.2)
-        //         // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-        //         // d3.selectAll("."+subgroupName)
-        //         // .style("opacity", 1)
-        //     }
-        //     var mousemove = function(d) {
-        //         tooltip
-        //         .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        //         .style("top", (d3.mouse(this)[1] +130) + "px")
-        //     }
-        //     var mouseleave = function(d) {
-        //         tooltip
-        //             .style("opacity", 0)
-        //         // Back to normal opacity: 0.8
-        //         // d3.selectAll(".myRect")
-        //         //     .style("opacity",0.8)
-
-        //     }
-        // }
-
-        // ----------------
-        // Create a tooltip
-        // ----------------
-
-        // Format sig figs
-        var formatSuffixDecimal2 = d3.format(".2f");
-
-        var tooltip = d3.select("#scene-1-viz")
-            .append("div")
-            .style("position","fixed")
-            .style("opacity", 0)
-            .attr("class", "tooltip")
-            .style("background-color", "white")
-            .style("border", "solid")
-            .style("border-width", "1px")
-            .style("border-radius", "5px")
-            .style("padding", "10px")
-
-        // Three function that change the tooltip when user hover / move / leave a cell
-        var mouseover = function(d) {
-            var subgroupName = d3.select(this.parentNode).datum().key;
-            var subgroupValue = d.data[subgroupName];
-            tooltip
-                .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                .style("opacity", 1)
+        // TEST AS ITS OWN FUNCTION
+        function tooltipStackedBar() {
             // ----------------
-            // Highlight a specific subgroup when hovered
+            // Create a tooltip
             // ----------------
-            // Reduce opacity of all rect to 0.2
-            // d3.selectAll(".myRect").style("opacity", 0.2)
-            // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-            // d3.selectAll("."+subgroupName)
-            // .style("opacity", 1)
-        }
-        var mousemove = function(d) {
-            tooltip
-            .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-            .style("top", (d3.mouse(this)[1] +130) + "px")
-        }
-        var mouseleave = function(d) {
-            tooltip
+
+            // Format sig figs
+            var formatSuffixDecimal2 = d3.format(".2f");
+
+            var tooltip = d3.select("#scene-1-viz")
+                .append("div")
+                .style("position","fixed")
                 .style("opacity", 0)
-            // Back to normal opacity: 0.8
-            // d3.selectAll(".myRect")
-            //     .style("opacity",0.8)
+                .attr("class", "tooltip")
+                .style("background-color", "white")
+                .style("border", "solid")
+                .style("border-width", "1px")
+                .style("border-radius", "5px")
+                .style("padding", "10px")
 
+            // Three function that change the tooltip when user hover / move / leave a cell
+            var mouseover = function(d) {
+                var subgroupName = d3.select(this.parentNode).datum().key;
+                var subgroupValue = d.data[subgroupName];
+                tooltip
+                    .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                    .style("opacity", 1)
+                // ----------------
+                // Highlight a specific subgroup when hovered
+                // ----------------
+                // Reduce opacity of all rect to 0.2
+                // d3.selectAll(".myRect").style("opacity", 0.2)
+                // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
+                // d3.selectAll("."+subgroupName)
+                // .style("opacity", 1)
+            }
+            var mousemove = function(d) {
+                tooltip
+                .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+                .style("top", (d3.mouse(this)[1] +130) + "px")
+            }
+            var mouseleave = function(d) {
+                tooltip
+                    .style("opacity", 0)
+                // Back to normal opacity: 0.8
+                // d3.selectAll(".myRect")
+                //     .style("opacity",0.8)
+
+            }
         }
+
+        // // ----------------
+        // // Create a tooltip
+        // // ----------------
+
+        // // Format sig figs
+        // var formatSuffixDecimal2 = d3.format(".2f");
+
+        // var tooltip = d3.select("#scene-1-viz")
+        //     .append("div")
+        //     .style("position","fixed")
+        //     .style("opacity", 0)
+        //     .attr("class", "tooltip")
+        //     .style("background-color", "white")
+        //     .style("border", "solid")
+        //     .style("border-width", "1px")
+        //     .style("border-radius", "5px")
+        //     .style("padding", "10px")
+
+        // // Three function that change the tooltip when user hover / move / leave a cell
+        // var mouseover = function(d) {
+        //     var subgroupName = d3.select(this.parentNode).datum().key;
+        //     var subgroupValue = d.data[subgroupName];
+        //     tooltip
+        //         .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+        //         .style("opacity", 1)
+        //     // ----------------
+        //     // Highlight a specific subgroup when hovered
+        //     // ----------------
+        //     // Reduce opacity of all rect to 0.2
+        //     // d3.selectAll(".myRect").style("opacity", 0.2)
+        //     // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
+        //     // d3.selectAll("."+subgroupName)
+        //     // .style("opacity", 1)
+        // }
+        // var mousemove = function(d) {
+        //     tooltip
+        //     .style("left", (d3.mouse(this)[0] + 250) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+        //     .style("top", (d3.mouse(this)[1] +130) + "px")
+        // }
+        // var mouseleave = function(d) {
+        //     tooltip
+        //         .style("opacity", 0)
+        //     // Back to normal opacity: 0.8
+        //     // d3.selectAll(".myRect")
+        //     //     .style("opacity",0.8)
+
+        // }
 
         // Show the bars
         svg.append("g")
