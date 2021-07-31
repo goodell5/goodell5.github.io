@@ -207,7 +207,7 @@ function setupSVG() {
                     radius: 80, //circle radius
                     radiusPadding: 20, // white space around circle before connector
                 },
-                color: ["white"],
+                color: ["grey"],
                 x: width * 0.2,
                 y: height * 0.4,
                 dy: -100,
@@ -225,7 +225,7 @@ function setupSVG() {
                     width: width * 0.2,
                     height: height * 0.5,
                 },
-                color: ["white"],
+                color: ["grey"],
                 x: width * 0.81,
                 y: height * 0.1,
                 dy: 200,
@@ -243,7 +243,7 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                color: ["lightgray"],
+                color: ["grey"],
                 x: width * 0.62,
                 y: height * 0.85,
                 dy: 0,
