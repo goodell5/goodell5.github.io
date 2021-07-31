@@ -206,7 +206,7 @@ function setupSVG() {
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
             annotations = [{
                 note: {
-                    label: "As obesity level increases, exercise decreases",
+                    label: "As obesity level increases, amount of exercise decreases",
                     title: "Weekly Exercise"
                 },
                 type: d3.annotationCalloutRect,
