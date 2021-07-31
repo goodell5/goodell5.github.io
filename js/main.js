@@ -235,9 +235,9 @@ function setupSVG() {
                 // ROI coords
                 x: width * 0.02,
                 // x: width * 0.1,
-                y: height * 0.005,
+                y: height * 0.0075,
                 // other coords
-                dy: 50,
+                dy: 250,
                 dx: 650
             }]
         }
