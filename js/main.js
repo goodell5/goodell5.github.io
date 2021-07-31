@@ -219,11 +219,11 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
-                    width: width * 0.2,
+                    width: width * 0.5,
                     height: height * 0.5,
                 },
                 color: ["white"],
-                x: width * 0.5,
+                x: width * 0.2,
                 y: height * 0.3,
                 dy: 150,
                 dx: 550
