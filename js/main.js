@@ -34,7 +34,6 @@ function setupSVG() {
         else {
             data = await d3.csv("/data/obesity_groups_" + slide + ".csv");
         }
-
         loadPageData();
     }
 
@@ -197,20 +196,36 @@ function setupSVG() {
         svg.selectAll(".annotation-group").remove()
 
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
+            // annotations = [{
+            //     note: {
+            //         label: "Lorem Ipsum. Lorem Ipsum",
+            //         title: "Exercise Annotation Title"
+            //     },
+            //     type: d3.annotationCalloutCircle,
+            //     subject: {
+            //         radius: 80, //circle radius
+            //         radiusPadding: 20, // white space around circle before connector
+            //     },
+            //     color: ["white"],
+            //     x: width * 0.2,
+            //     y: height * 0.4,
+            //     dy: -100,
+            //     dx: 150
+            // }]
             annotations = [{
                 note: {
                     label: "Lorem Ipsum. Lorem Ipsum",
-                    title: "Exercise Annotation Title"
+                    title: "Age Annotation Title"
                 },
-                type: d3.annotationCalloutCircle,
+                type: d3.annotationCalloutRect,
                 subject: {
-                    radius: 80, //circle radius
-                    radiusPadding: 20, // white space around circle before connector
+                    width: width * 0.2,
+                    height: height * 0.5,
                 },
                 color: ["white"],
-                x: width * 0.2,
-                y: height * 0.4,
-                dy: -100,
+                x: width * 0.81,
+                y: height * 0.1,
+                dy: -120,
                 dx: 150
             }]
         }
