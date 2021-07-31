@@ -206,8 +206,8 @@ function setupSVG() {
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
             annotations = [{
                 note: {
-                    label: "Lorem Ipsum. Lorem Ipsum",
-                    title: "Exercise Annotation Title"
+                    label: "As obesity level increases, exercise decreases",
+                    title: "Weekly Exercise"
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
@@ -221,7 +221,7 @@ function setupSVG() {
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
-                dx: 700
+                dx: 750
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
