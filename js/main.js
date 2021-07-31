@@ -17,13 +17,6 @@ var svg = d3.select("#my_dataviz")
 .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// COLORS & SUBGROUPS (MAY NEED TO MOVE TO FUNCTION ONCE DATA IS LOADED)
-
-// // List of subgroups = header of the csv files = soil condition here
-// var subgroups = data.columns.slice(1)
-// // List of groups = obesity levels here = value of the first column called group -> I show them on the X axis
-// var groups = d3.map(data, function(d){return(d.obesity_level)}).keys()
-
 function setupSVG() {
     document.getElementById("my_dataviz").setAttribute("current-slide", slide);
 
