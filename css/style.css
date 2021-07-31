@@ -11,7 +11,7 @@ p, h1, h2, h3, h4 {
 }
 
 text {
-    fill:white
+    fill:lightgrey;
 }
 .select {
     font: bold 14px Verdana;
@@ -39,7 +39,6 @@ text {
     font: 20px sans-serif;
 }
 
-
 /* Annotations */
 
 .subject {
@@ -49,7 +48,10 @@ text {
 }
 
 .annotation-note-title {
-    fill:lightgrey;
+    fill:white;
+}
+.tspan {
+    fill:white;
 }
 
 /* Page buttons */
