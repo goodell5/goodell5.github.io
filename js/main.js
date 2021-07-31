@@ -228,13 +228,13 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // region of interest
-                    width: width * 0.5,
+                    width: width * 0.75,
                     height: height * 0.5,
                 },
                 color: ["white"],
                 // text coords
-                x: width * 0.05,
-                y: height * 0.05,
+                x: width * 0.1,
+                y: height * 0.1,
                 // other coords
                 dy: 150,
                 dx: 450
