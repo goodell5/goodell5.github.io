@@ -85,9 +85,16 @@ function setupSVG() {
             .call(d3.axisLeft(y));
 
         // color palette = one color per subgroup
-        var color = d3.scaleOrdinal()
-            .domain(subgroups)
-            .range(['#fe4644','#ff881a', '#33a3ff'])
+        if (slide == "exercise") {
+            var color = d3.scaleOrdinal()
+                .domain(subgroups)
+                .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c'])
+        }
+        else if (slide == "tech") {
+            var color = d3.scaleOrdinal()
+                .domain(subgroups)
+                .range(['#fe4644','#ff881a', '#33a3ff'])
+        }
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
         // Normalize the data -> sum of each group must be 100!
