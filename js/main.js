@@ -228,17 +228,17 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // region of interest
-                    width: width * 0.75,
+                    width: width * 0.85,
                     height: height * 0.25,
                 },
                 color: ["white"],
                 // text coords
-                x: width * 0.025,
+                x: width * 0.0225,
                 // x: width * 0.1,
                 y: height * 0.2,
                 // other coords
                 dy: 50,
-                dx: 550
+                dx: 600
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
