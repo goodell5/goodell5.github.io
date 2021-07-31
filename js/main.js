@@ -153,6 +153,10 @@ function setupSVG() {
         // ----------------
         // Create a tooltip
         // ----------------
+
+        // Format sig figs
+        var formatSuffixDecimal2 = d3.format(".2f");
+
         var tooltip = d3.select("#scene-1-viz")
             .append("div")
             .style("position","fixed")
