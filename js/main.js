@@ -223,8 +223,8 @@ function setupSVG() {
                     height: height * 0.5,
                 },
                 color: ["white"],
-                x: width * 0.5,
-                y: height * 0.5,
+                x: width * 0.1,
+                y: height * 0.8,
                 dy: 150,
                 dx: -150
             }]
