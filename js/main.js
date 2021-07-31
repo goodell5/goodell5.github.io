@@ -238,7 +238,7 @@ function setupSVG() {
                 y: height * 0.1,
                 // other coords
                 dy: 50,
-                dx: 600
+                dx: 650
             }]
         }
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
