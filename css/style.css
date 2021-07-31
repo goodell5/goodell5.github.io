@@ -1,0 +1,62 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: "avenir next", Arial, sans-serif; */
+    margin: 0;
+    background: rgb(49, 53, 55);
+}
+
+/* div {
+    max-width: 960px;
+} */
+
+p, h1, h2, h3, h4 {
+    color:rgb(206, 206, 206);
+    margin-left: 80px;
+}
+
+/* circle {
+    fill: blue; 
+    stroke:lightblue;
+}  */
+
+text {
+    fill:white
+}
+.select {
+    font: bold 14px Verdana;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    cursor: pointer;
+}
+
+.bubbles {
+    stroke-width: 2px;
+    stroke: white;
+  }
+  .bubbles:hover {
+    stroke: black;
+  }
+
+.domain {
+    stroke:white;
+}
+
+/* Page buttons */
+.nonClick {
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.pagination>.nonClick>a {
+    color: grey;
+}
+
+.pagination>.active>a {
+    color: white;
+}
