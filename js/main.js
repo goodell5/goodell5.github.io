@@ -114,7 +114,7 @@ function setupSVG() {
             .append("rect")
                 .attr("fill", function(d, i) { return color(subgroups[i]); })
                 .attr("x", width + 20)
-                .attr("y", function(d, i) { return margin.top + i * 25 + offset_legend - 3})
+                .attr("y", function(d, i) { return margin.top + i * 25 + offset_legend - 5})
                 .attr("height", 10)
                 .attr("width", 10)
         // Legend labels
@@ -252,6 +252,8 @@ function setupSVG() {
     }
 
     function addAnnotationsStackedBar() {
+        var svg = d3.select("#my_dataviz")
+
         console.log("addAnnotationsStackedBar is CALLED!")
         svg.selectAll(".annotation-group").remove()
 
