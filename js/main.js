@@ -27,7 +27,12 @@ function setupSVG() {
         // else {
         data = await d3.csv("/data/obesity_groups_" + slide + ".csv");
         // }
+        clearOldData();
         loadPageData();
+    }
+
+    function clearOldData() {
+        d3.select("secne-1-svg").remove();
     }
 
     // NEED TO FINISH
@@ -115,11 +120,12 @@ function setupSVG() {
             .enter()
             .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
-                .attr("x", width + 30)
-                .attr("y", function (d, i) { return margin.top + i * 25 })
+                .attr("x", width + 40)
+                .attr("y", function (d, i) { return margin.top + i * 35 })
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
+                .style("font-size", width * 0.01)
 
 
         // Normalize the data -> sum of each group must be 100!
