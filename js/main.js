@@ -97,11 +97,11 @@ function setupSVG() {
         // Legend
         // var subgroupName = d3.select(this.parentNode).datum().key;
         // Legend icons
+        console.log(function(d) { return color(d.key); })
         svg.selectAll("legend_rects")
             .data(subgroups)
             .enter()
             .append("rect")
-                console.log(function(d) { return color(d.key); })
                 .attr("fill", function(d) { return color(d.key); })
                 .attr("x", width + 20)
                 .attr("y", function(d, i) { return margin.top + i * 25 })
