@@ -32,7 +32,8 @@ function setupSVG() {
     }
 
     function clearOldData() {
-        d3.select("scene-1-svg").remove();
+        // d3.select("scene-1-svg").remove();
+        d3.selectAll("svg").remove();
     }
 
     // NEED TO FINISH
@@ -102,9 +103,6 @@ function setupSVG() {
         // Legend
         // var subgroupName = d3.select(this.parentNode).datum().key;
         // Legend icons
-        console.log(color(subgroups))        
-        console.log(color(subgroups[2]))
-        console.log(subgroups)
         svg.selectAll("legend_rects")
             .data(subgroups)
             .enter()
@@ -125,7 +123,7 @@ function setupSVG() {
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
-                .style("font-size", width * 0.05)
+                .style("font-size", width * 0.015)
 
 
         // Normalize the data -> sum of each group must be 100!
