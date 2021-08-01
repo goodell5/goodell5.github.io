@@ -101,7 +101,7 @@ function setupSVG() {
             .data(subgroups)
             .enter()
             .append("rect")
-                .attr("fill", function(d) { return color(d.key); })
+                .attr("fill", function(d) { return color(d.value); })
                 .attr("x", width + 20)
                 .attr("y", function(d, i) { return margin.top + i * 25 })
                 .attr("height", 10)
