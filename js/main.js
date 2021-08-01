@@ -98,6 +98,7 @@ function setupSVG() {
         // var subgroupName = d3.select(this.parentNode).datum().key;
         // Legend icons
         console.log(color(subgroups))
+        console.log(subgroups)
         svg.selectAll("legend_rects")
             .data(subgroups)
             .enter()
@@ -285,10 +286,10 @@ function setupSVG() {
                 },
                 // ROI coords
                 x: width * 0.015,
-                y: height * 0,
+                y: height * -0.025,
                 // label/text coords
                 dy: 125,
-                dx: 120,
+                dx: 110,
                 data: { color: ["white"]}
             },
             {
