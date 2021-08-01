@@ -1,5 +1,5 @@
 var slide = "exercise"
-var firstRun = true;
+// var firstRun = true;
 
 // set the dimensions and margins of the graph
 var margin = {top: 40, right: 200, bottom: 80, left: 100},
@@ -36,25 +36,13 @@ function setupSVG() {
 
         // FIX BOTH PLOTS
         // plot initial data (plotInitData)
-        // if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-        //     // plotScatter(data);
-        //     plotStackedBar(data);
-        // }
-        // else {
-        //     plotStackedBar(data);
-        // }
-        
-        // plotStackedBar(data);
-        if (firstRun) {
+        if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
+            // plotScatter(data);
             plotStackedBar(data);
-            firstRun = false;
         }
         else {
-            plotStackedBarTransition(data);
-            // update(data);
+            plotStackedBar(data);
         }
-        
-
 
         // plot transitions (plotDataWithTransitions(newData))
     }
@@ -87,158 +75,6 @@ function setupSVG() {
             // .attr("class", "axis")
             // .attr("class", "Y-axis")
             .call(d3.axisLeft(y));
-
-        // // color palette = one color per subgroup
-        // if (slide == "exercise") {
-        //     var color = d3.scaleOrdinal()
-        //         .domain(subgroups)
-        //         .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c'])
-        // }
-        // else if (slide == "age") {
-        //     var color = d3.scaleOrdinal()
-        //         .domain(subgroups)
-        //         .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c', "#3cfdea", "#ffff1a"])
-        // }
-        // else if (slide == "tech") {
-        //     var color = d3.scaleOrdinal()
-        //         .domain(subgroups)
-        //         .range(['#fe4644','#ff881a', '#33a3ff'])
-        // }
-        // // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
-
-        // // Normalize the data -> sum of each group must be 100!
-        // // console.log(data)
-        // dataNormalized = []
-        // data.forEach(function(d){
-        //     // Compute the total
-        //     tot = 0
-        //     for (i in subgroups){ name=subgroups[i] ; tot += +d[name] }
-        //     // Now normalize
-        //     for (i in subgroups){ name=subgroups[i] ; d[name] = d[name] / tot * 100}
-        // })
-
-        // //stack the data? --> stack per subgroup
-        // var stackedData = d3.stack()
-        //     .keys(subgroups)
-        //     (data)
-
-        // // ----------------
-        // // Create a tooltip
-        // // ----------------
-
-        // // Format sig figs
-        // var formatSuffixDecimal2 = d3.format(".2f");
-
-        // // original
-        // var tooltip = d3.select("#my_dataviz")
-        //     .append("div")
-        //     .style("position","fixed")
-        //     .style("opacity", 0)
-        //     .attr("class", "tooltip")
-        //     .style("background-color", "white")
-        //     .style("border", "solid")
-        //     .style("border-width", "1px")
-        //     .style("border-radius", "5px")
-        //     .style("padding", "10px")
-
-        // // Three function that change the tooltip when user hover / move / leave a cell
-        // var mouseover = function(d) {
-        //     var subgroupName = d3.select(this.parentNode).datum().key;
-        //     var subgroupValue = d.data[subgroupName];
-        //     if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
-        //         tooltip
-        //         .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-        //         .style("opacity", 1)
-        //     }
-        //     else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-        //         tooltip
-        //         .html("Ages: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-        //         .style("opacity", 1)
-        //     }
-        //     else {
-        //         tooltip
-        //         .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-        //         .style("opacity", 1)
-        //     }
-            
-        //     // ----------------
-        //     // Highlight a specific subgroup when hovered (BROKEN)
-        //     // ----------------
-        //     // Reduce opacity of all rect to 0.2
-        //     // d3.selectAll(".myRect").style("opacity", 0.2)
-        //     // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-        //     // d3.selectAll("."+subgroupName)
-        //     // .style("opacity", 1)
-        // }
-        // var mousemove = function(d) {
-        //     tooltip
-        //     .style("left", (d3.mouse(this)[0] + 450) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-        //     .style("top", (d3.mouse(this)[1] + 130) + "px")
-        // }
-        // var mouseleave = function(d) {
-        //     tooltip
-        //         .style("opacity", 0)
-        //     // Back to normal opacity: 0.8 (BROKEN with highlight feature above)
-        //     // d3.selectAll(".myRect")
-        //     //     .style("opacity",0.8)
-        // }
-
-        // // Show the bars
-        // svg.append("g")
-        //     .selectAll("g")
-        //     // Enter in the stack data = loop key per key = group per group
-        //     .data(stackedData)
-        //     .enter().append("g")
-        //     .attr("fill", function(d) { return color(d.key); })
-        //     .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
-        //     .selectAll("rect")
-        //     // enter a second time = loop subgroup per subgroup to add all rectangles
-        //     .data(function(d) { return d; })
-        //     .enter().append("rect")
-        //         .attr("class","bars")
-        //         .attr("x", function(d) { return x(d.data.obesity_level); })
-        //         .attr("y", function(d) { return y(d[1]); })
-        //         .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-        //         .attr("width",x.bandwidth())
-        //     .on("mouseover", mouseover)
-        //     .on("mousemove", mousemove)
-        //     .on("mouseleave", mouseleave)
-
-        // addAnnotationsStackedBar();
-    }
-
-    // NEEDS WORK
-    function plotStackedBarTransition(data) {
-        // Add X axis
-        var x = d3.scaleBand()
-            .domain(groups)
-            .range([0, width])
-            .padding([0.2])
-        svg.append("g")
-            // .attr("class", "axisText")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x).tickSizeOuter(0))
-            .selectAll("text")
-                .attr("transform", "translate(-10,0)rotate(-45)")
-                .style("text-anchor", "end");
-
-        // Add Y axis
-        var y = d3.scaleLinear()
-            .domain([0, 100])
-            .range([ height, 0 ]);
-        svg.append("g")
-            // .attr("class", "axis")
-            // .attr("class", "Y-axis")
-            .call(d3.axisLeft(y));
-
-        // variable u: map data to existing bars
-        var u = svg.selectAll("rect")
-            .data(data)
-
-        // List of subgroups = header of the csv files = soil condition here
-        var subgroups = data.columns.slice(1)
-        // List of groups = obesity levels here = value of the first column called group -> I show them on the X axis
-        var groups = d3.map(data, function(d){return(d.obesity_level)}).keys()
 
         // color palette = one color per subgroup
         if (slide == "exercise") {
@@ -335,46 +171,31 @@ function setupSVG() {
             //     .style("opacity",0.8)
         }
 
-        // UPDATE BARS
-        // addAnnotationsStackedBar();
-        u
-            .enter()
-            .append("rect")
-            .merge(u)
-            // .data(stackedData) // update data
-            .transition()   // apply transition
-            .duration(1000) // time
-            // .on("start", function () { })
+        // Show the bars
+        svg.append("g")
+            .selectAll("g")
+            // Enter in the stack data = loop key per key = group per group
+            .data(stackedData)
+            .enter().append("g")
+            .attr("fill", function(d) { return color(d.key); })
+            .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
+            .selectAll("rect")
+            // enter a second time = loop subgroup per subgroup to add all rectangles
+            .data(function(d) { return d; })
+            .enter().append("rect")
+                .attr("x", function(d) { return x(d.data.obesity_level); })
+                .attr("y", function(d) { return y(d[1]); })
+                .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+                .attr("width",x.bandwidth())
+            .on("mouseover", mouseover)
+            .on("mousemove", mousemove)
+            .on("mouseleave", mouseleave)
 
-            // .delay(function (d, i) { return i / stackedData.length * 3000; })
+        addAnnotationsStackedBar();   // fix this function
+    }
 
-                
-
-                // // Show the bars
-                // svg.append("g")
-                //     .selectAll("g")
-                //     // Enter in the stack data = loop key per key = group per group
-                //     .data(stackedData)
-                //     .enter().append("g")
-                //     .attr("fill", function(d) { return color(d.key); })
-                //     .attr("class", function(d){ return "myRect " + d.key }) // Add a class to each subgroup: their name
-                //     .selectAll("rect")
-                //     // enter a second time = loop subgroup per subgroup to add all rectangles
-                //     .data(function(d) { return d; })
-                //     .enter().append("rect")
-                        .attr("class","bars")
-                        .attr("x", function(d) { return x(d.data.obesity_level); })
-                        .attr("y", function(d) { return y(d[1]); })
-                        .attr("height", function(d) { return y(d[0]) - y(d[1]); })
-                        .attr("width",x.bandwidth())
-                    .on("mouseover", mouseover)
-                    .on("mousemove", mousemove)
-                    .on("mouseleave", mouseleave)
-
-            // .on("end", function () { });
-
-        addAnnotationsStackedBar();
-
+    // NEEDS WORK
+    function plotStackedBarTransition() {
 
     }
 
@@ -433,15 +254,15 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.33,
-                    height: height * 0.2,
+                    width: width * 0.25,
+                    height: height * 0.15,
                 },
                 // ROI coords
-                x: width * 0.015,
-                y: height * 0.05,
+                x: width * 0.15,
+                y: height * 0.1,
                 // label/text coords
-                dy: 100,
-                dx: 200,
+                dy: 225,
+                dx: 225,
                 data: { color: ["white"]}
             },
             {
