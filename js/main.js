@@ -95,7 +95,7 @@ function setupSVG() {
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
         // Legend
-        var subgroupName = d3.select(this.parentNode).datum().key;
+        // var subgroupName = d3.select(this.parentNode).datum().key;
         // Legend icons
         svg.selectAll("legend_rects")
             .data(subgroups)
