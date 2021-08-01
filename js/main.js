@@ -294,8 +294,8 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                x: width * 0.25,
-                y: height * 0.015,
+                x: width * 0.125,
+                y: height * 0.25,
                 dy: -30,
                 dx: 150,
 
@@ -311,14 +311,14 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.8,
-                    height: height * 0.4,
+                    width: width * 0.25,
+                    height: height * 0.8,
                 },
                 // ROI coords
-                x: width * 0.015,
-                y: height * 0.4,
+                x: width * 0.75,
+                y: height * 0.015,
                 // label/text coords
-                dy: 500,
+                dy: 250,
                 dx: 670,
                 data: { color: ["white"]}
             }]
