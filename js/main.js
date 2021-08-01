@@ -183,27 +183,27 @@ function setupSVG() {
             if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
                 tooltip
                 .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                .style("opacity", 1)
+                .style("opacity", 1);
             }
             else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
                 tooltip
                 .html("Ages: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                .style("opacity", 1)
+                .style("opacity", 1);
             }
             else {
                 tooltip
                 .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                .style("opacity", 1)
+                .style("opacity", 1);
             }
             
             // ----------------
             // Highlight a specific subgroup when hovered (BROKEN)
             // ----------------
             // Reduce opacity of all rect to 0.2
-            // d3.selectAll(".myRect").style("opacity", 0.2)
-            // // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-            // d3.selectAll("."+subgroupName)
-            // .style("opacity", 1)
+            d3.selectAll(".myRect").style("opacity", 0.2)
+            // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
+            d3.selectAll("."+subgroupName)
+            .style("opacity", 1)
         }
         var mousemove = function(d) {
             tooltip
@@ -212,10 +212,10 @@ function setupSVG() {
         }
         var mouseleave = function(d) {
             tooltip
-                .style("opacity", 0)
+                .style("opacity", 0);
             // Back to normal opacity: 0.8 (BROKEN with highlight feature above)
-            // d3.selectAll(".myRect")
-            //     .style("opacity",0.8)
+            d3.selectAll(".myRect")
+                .style("opacity",0.8)
         }
 
         // Show the bars
