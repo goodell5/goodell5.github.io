@@ -252,6 +252,7 @@ function setupSVG() {
     }
 
     function addAnnotationsStackedBar() {
+        console.log("addAnnotationsStackedBar is CALLED!")
         svg.selectAll(".annotation-group").remove()
 
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
