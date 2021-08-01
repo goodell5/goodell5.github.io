@@ -89,16 +89,19 @@ function setupSVG() {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
                 .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c'])
+            var legend_title = "Weekly Exercise"
         }
         else if (slide == "age") {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
                 .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c', "#3cfdea", "#ffff1a"])
+            var legend_title = "Age Groups"
         }
         else if (slide == "tech") {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
                 .range(['#fe4644','#ff881a', '#33a3ff'])
+            var legend_title = "Daily Tech Use"
         }
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
@@ -119,9 +122,15 @@ function setupSVG() {
             .data(subgroups)
             .enter()
             .append("text")
+                .style("fill", "white")
+                .text(legend_title)
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
+                .style("font-size", width * 0.0175)
+            .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
-                .attr("y", function (d, i) { return margin.top + i * 25 })
+                .attr("y", function (d, i) { return margin.top + i * 30 })
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
