@@ -243,9 +243,9 @@ function setupSVG() {
                 },
                 data: {
                     color: ["white"],
-                    x: width * 0.1,
-                    y: height * 0.1,
-                    dy: 0,
+                    x: width * 0.25,
+                    y: height * 0.35,
+                    dy: 30,
                     dx: 150
                 }
             },
@@ -257,18 +257,18 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.83,
-                    height: height * 0.5,
+                    width: width * 0.4,
+                    height: height * 0.4,
                 },
                 data:
                 {
                     color: ["white"],
                     // ROI coords
-                    x: width * 0.015,
-                    y: height * 0.015,
+                    x: width * 0.25,
+                    y: height * 0.25,
                     // label/text coords
                     dy: 250,
-                    dx: 670
+                    dx: 500
                 }
             }]
         }
