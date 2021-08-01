@@ -106,7 +106,7 @@ function setupSVG() {
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
         // Legend
-        // var subgroupName = d3.select(this.parentNode).datum().key;
+        var offset_legend = 25;
         // Legend icons
         svg.selectAll("legend_rects")
             .data(subgroups)
@@ -114,18 +114,17 @@ function setupSVG() {
             .append("rect")
                 .attr("fill", function(d, i) { return color(subgroups[i]); })
                 .attr("x", width + 20)
-                .attr("y", function(d, i) { return margin.top + i * 25 })
+                .attr("y", function(d, i) { return margin.top + i * 25 + offset_legend})
                 .attr("height", 10)
                 .attr("width", 10)
         // Legend labels
-        var offset_legend_title = 25;
         svg.selectAll("legend_labels")
             .data(subgroups)
             .enter()
             .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
-                .attr("y", function (d, i) { return margin.top + i * 25 +  offset_legend_title})
+                .attr("y", function (d, i) { return margin.top + i * 25 +  offset_legend})
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
