@@ -294,14 +294,13 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                x: width * 0.75,
-                y: height * 0.35,
+                x: width * 0.25,
+                y: height * 0.015,
                 dy: -30,
                 dx: 150,
-                
-                data: {
-                    color: ["white"],
 
+                data: {
+                    color: ["white"]
                 }
             },
             {
@@ -315,16 +314,13 @@ function setupSVG() {
                     width: width * 0.8,
                     height: height * 0.4,
                 },
-                data:
-                {
-                    color: ["white"],
-                    // ROI coords
-                    x: width * 0.015,
-                    y: height * 0.4,
-                    // label/text coords
-                    dy: 500,
-                    dx: 670
-                }
+                // ROI coords
+                x: width * 0.015,
+                y: height * 0.4,
+                // label/text coords
+                dy: 500,
+                dx: 670,
+                data: { color: ["white"]}
             }]
         }
         else {
