@@ -267,7 +267,7 @@ function setupSVG() {
                     x: width * 0.25,
                     y: height * 0.4,
                     // label/text coords
-                    dy: 250,
+                    dy: 500,
                     dx: 670
                 }
             }]
