@@ -118,13 +118,14 @@ function setupSVG() {
                 .attr("height", 10)
                 .attr("width", 10)
         // Legend labels
+        var offset_legend_title = 25;
         svg.selectAll("legend_labels")
             .data(subgroups)
             .enter()
             .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
-                .attr("y", function (d, i) { return margin.top + i * 25 + 5 })
+                .attr("y", function (d, i) { return margin.top + i * 25 +  offset_legend_title})
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
