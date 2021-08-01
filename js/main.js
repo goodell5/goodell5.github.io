@@ -296,16 +296,20 @@ function setupSVG() {
                 .textWrap(265) // changes text wrap width
                 .annotations(annotation_1)
                 .annotations(annotation_2)
+            svg.append('g')
+                .attr('class', 'annotation-group')
+                .call(makeAnnotations)
         }
         else {
             const makeAnnotations = d3.annotation()
-            .textWrap(265) // changes text wrap width
-            .annotations(annotations)
+                .textWrap(265) // changes text wrap width
+                .annotations(annotations)
+            svg.append('g')
+            .attr('class', 'annotation-group')
+            .call(makeAnnotations)
         }
 
-        svg.append('g')
-        .attr('class', 'annotation-group')
-        .call(makeAnnotations)
+
     }
 
     loadAllData();
