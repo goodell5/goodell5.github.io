@@ -97,7 +97,8 @@ function setupSVG() {
         // Legend
         // var subgroupName = d3.select(this.parentNode).datum().key;
         // Legend icons
-        console.log(color(subgroups))
+        console.log(color(subgroups))        
+        console.log(color(subgroups[2]))
         console.log(subgroups)
         svg.selectAll("legend_rects")
             .data(subgroups)
