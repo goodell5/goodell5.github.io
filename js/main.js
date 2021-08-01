@@ -122,12 +122,6 @@ function setupSVG() {
             .data(subgroups)
             .enter()
             .append("text")
-                .style("fill", "white")
-                .text(legend_title)
-                .attr("text-anchor", "left")
-                .style("alignment-baseline", "middle")
-                .style("font-size", width * 0.0175)
-            .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
                 .attr("y", function (d, i) { return margin.top + i * 30 })
@@ -135,6 +129,16 @@ function setupSVG() {
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
                 .style("font-size", width * 0.015)
+        // Legend title
+        svg.selectAll("legend_labels_title")
+            .data(subgroups)
+            .enter()
+            .append("text")
+                .style("fill", "white")
+                .text(legend_title)
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
+                .style("font-size", width * 0.0175)
 
 
         // Normalize the data -> sum of each group must be 100!
