@@ -42,7 +42,7 @@ text {
 /* Annotations */
 
 .subject {
-    stroke-width: 5;
+    stroke-width: 2;
     stroke-dasharray: 2px;
     fill: none
 }
