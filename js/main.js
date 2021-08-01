@@ -252,7 +252,7 @@ function setupSVG() {
     }
 
     function addAnnotationsStackedBar() {
-        var svg = d3.select("#my_dataviz");
+        var svg = d3.select("#scene-1-svg");
 
         console.log("addAnnotationsStackedBar is CALLED!")
         svg.selectAll(".annotation-group").remove()
