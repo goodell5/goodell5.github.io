@@ -32,7 +32,7 @@ function setupSVG() {
     }
 
     function clearOldData() {
-        d3.select("secne-1-svg").remove();
+        d3.select("scene-1-svg").remove();
     }
 
     // NEED TO FINISH
@@ -121,11 +121,11 @@ function setupSVG() {
             .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
-                .attr("y", function (d, i) { return margin.top + i * 35 })
+                .attr("y", function (d, i) { return margin.top + i * 25 })
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
-                .style("font-size", width * 0.01)
+                .style("font-size", width * 0.05)
 
 
         // Normalize the data -> sum of each group must be 100!
