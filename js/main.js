@@ -400,7 +400,7 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.25,
+                    width: width * 0.33,
                     height: height * 0.2,
                 },
                 // ROI coords
@@ -408,7 +408,7 @@ function setupSVG() {
                 y: height * 0.05,
                 // label/text coords
                 dy: 100,
-                dx: 100,
+                dx: 200,
                 data: { color: ["white"]}
             },
             {
