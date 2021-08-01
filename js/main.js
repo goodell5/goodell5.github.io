@@ -309,7 +309,7 @@ function setupSVG() {
                 },
                 // ROI coords
                 x: width * 0.165,
-                y: height * 0.065,
+                y: height * 0.07,
                 // label/text coords
                 dy: 125,
                 dx: 110,
@@ -327,8 +327,8 @@ function setupSVG() {
                     height: height * 0.88,
                 },
                 // ROI coords
-                x: width * 0.85,
-                y: height * 0.125,
+                x: width * 0.875,
+                y: height * 0.11,
                 // label/text coords
                 dy: 225,
                 dx: 225,
