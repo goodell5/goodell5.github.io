@@ -1,0 +1,8 @@
+obesity_level,14-19,20-29,30-39,40-49,50-59,60-61
+Insufficient_Weight,102,162,18,0,1,1
+Normal_Weight,88,151,35,6,1,0
+Overweight_Type_I,54,134,77,11,6,0
+Overweight_Type_II,74,176,51,24,1,0
+Obesity_Level_I,176,92,2,0,0,0
+Obesity_Level_II,0,171,98,12,0,0
+Obesity_Level_III,43,281,0,0,0,0
