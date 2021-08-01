@@ -305,7 +305,7 @@ function setupSVG() {
                 subject: {
                     // ROI width/height
                     width: width * 0.275,
-                    height: height * 0.18,
+                    height: height * 0.2,
                 },
                 // ROI coords
                 x: width * 0.1675,
@@ -331,7 +331,7 @@ function setupSVG() {
                 y: height * 0.115,
                 // label/text coords
                 dy: 225,
-                dx: 225,
+                dx: 200,
                 data: { color: ["white"]}
             }]
         }
