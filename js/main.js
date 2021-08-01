@@ -85,7 +85,7 @@ function setupSVG() {
         else if (slide == "age") {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
-                .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c', "#3cfdea", "#81adff"])
+                .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c', "#3cfdea", "#ffff1a"])
         }
         else if (slide == "tech") {
             var color = d3.scaleOrdinal()
@@ -242,10 +242,10 @@ function setupSVG() {
                     radiusPadding: 20, // white space around circle befor connector
                 },
                 color: ["white"],
-                x: width * 0.62,
-                y: height * 0.85,
+                x: width * 0.1,
+                y: height * 0.1,
                 dy: 0,
-                dx: -150
+                dx: 150
             }]
         }
         else {
