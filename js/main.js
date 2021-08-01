@@ -37,7 +37,8 @@ function setupSVG() {
         // FIX BOTH PLOTS
         // plot initial data (plotInitData)
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-            plotScatter(data);
+            // plotScatter(data);
+            plotStackedBar(data);
         }
         else {
             plotStackedBar(data);
