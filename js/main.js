@@ -102,8 +102,8 @@ function setupSVG() {
                 .attr("fill", function(d) { return color(d.key); })
                 .attr("x", width + 20)
                 .attr("y", function(d, i) { return margin.top + i * 25 })
-                .attr("height", 20)
-                .attr("width", 20)
+                .attr("height", 10)
+                .attr("width", 10)
 
 
         // Normalize the data -> sum of each group must be 100!
@@ -266,12 +266,12 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.25,
+                    width: width * 0.35,
                     height: height * 0.2,
                 },
                 // ROI coords
-                x: width * 0.05,
-                y: height * 0.025,
+                x: width * 0.015,
+                y: height * 0.0125,
                 // label/text coords
                 dy: 225,
                 dx: 225,
