@@ -34,7 +34,7 @@ function setupSVG() {
     function clearOldData() {
         // d3.select("scene-1-svg").remove(); // doesn't remove anything
         // d3.selectAll("svg").remove(); // removes everything 
-        d3.selectAll("g").remove();
+        // d3.selectAll("g").remove();
 
     }
 
