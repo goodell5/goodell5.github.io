@@ -272,7 +272,7 @@ function setupSVG() {
                 color: ["white"],
                 // ROI coords
                 x: width * 0.165,
-                y: height * 0.11,
+                y: height * 0.115,
                 // label/text coords
                 dy: 250,
                 dx: 670
@@ -289,7 +289,7 @@ function setupSVG() {
                 // type: d3.annotationCalloutCircle,
                 // subject: {
                 //     radius: 100,
-                //     radiusPadding: 10, // white space around circle before connector
+                //     radiusPadding: 10,
                 // },
                 // // ROI/subject x/y
                 // x: width * 0.15,
@@ -308,7 +308,7 @@ function setupSVG() {
                     height: height * 0.18,
                 },
                 // ROI coords
-                x: width * 0.165,
+                x: width * 0.17,
                 y: height * 0.07,
                 // label/text coords
                 dy: 125,
@@ -327,7 +327,7 @@ function setupSVG() {
                     height: height * 0.88,
                 },
                 // ROI coords
-                x: width * 0.865,
+                x: width * 0.8625,
                 y: height * 0.11,
                 // label/text coords
                 dy: 225,
@@ -350,7 +350,7 @@ function setupSVG() {
                 color: ["white"],
                 // ROI coords
                 x: width * 0.165,
-                y: height * 0.065,
+                y: height * 0.07,
                 // label/text coords
                 dy: 250,
                 dx: 670
