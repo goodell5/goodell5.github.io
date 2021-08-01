@@ -331,7 +331,7 @@ function setupSVG() {
                 y: height * 0.115,
                 // label/text coords
                 dy: 225,
-                dx: 205,
+                dx: 210,
                 data: { color: ["white"]}
             }]
         }
