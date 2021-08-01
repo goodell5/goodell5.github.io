@@ -114,7 +114,7 @@ function setupSVG() {
             .append("rect")
                 .attr("fill", function(d, i) { return color(subgroups[i]); })
                 .attr("x", width + 20)
-                .attr("y", function(d, i) { return margin.top + i * 25 + offset_legend})
+                .attr("y", function(d, i) { return margin.top + i * 25 + offset_legend - 3})
                 .attr("height", 10)
                 .attr("width", 10)
         // Legend labels
@@ -130,9 +130,6 @@ function setupSVG() {
                 .style("alignment-baseline", "middle")
                 .style("font-size", width * 0.015)
         // Legend title
-        // svg.selectAll("legend_labels_title")
-        //     .data(subgroups)
-        //     .enter()
         svg.append("g")
             .append("text")
                 .style("fill", "white")
