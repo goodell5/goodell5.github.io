@@ -6,16 +6,6 @@ var margin = {top: 40, right: 200, bottom: 80, left: 100},
     width = 960 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#my_dataviz")
-.append("svg")
-    .attr("id", "scene-1-svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 1050 800")
-    // .attr("width", width + margin.left + margin.right)
-    // .attr("height", height + margin.top + margin.bottom)
-.append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 function setupSVG() {
     document.getElementById("my_dataviz").setAttribute("current-slide", slide);
@@ -56,6 +46,16 @@ function setupSVG() {
     }
 
     function plotStackedBar(data) {
+        // append the svg object to the body of the page
+        var svg = d3.select("#my_dataviz")
+        .append("svg")
+            .attr("id", "scene-1-svg")
+            .attr("preserveAspectRatio", "xMinYMin meet")
+            .attr("viewBox", "0 0 1050 800")
+            // .attr("width", width + margin.left + margin.right)
+            // .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         // List of subgroups = header of the csv files = soil condition here
         var subgroups = data.columns.slice(1)
