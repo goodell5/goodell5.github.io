@@ -94,6 +94,18 @@ function setupSVG() {
         }
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
+        // Legend
+        svg.selectAll("legend_rects")
+            .data(subgroups)
+            .enter()
+            .append("rect")
+                .attr("fill", function(d) { return color(d.key); })
+                .attr("x", width + 20)
+                .attr("y", function(d, i) { return margin.top + i * 25 })
+                .attr("height", 20)
+                .attr("width", 20)
+
+
         // Normalize the data -> sum of each group must be 100!
         // console.log(data)
         dataNormalized = []
