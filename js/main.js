@@ -95,15 +95,28 @@ function setupSVG() {
         // MORE COLORS (if necessary): "#fe4644", "#ff881a", "#86d59c", "#33a3ff", "#3cfdea", "#81adff", "#ffff1a"
 
         // Legend
+        var subgroupName = d3.select(this.parentNode).datum().key;
+        // Legend icons
         svg.selectAll("legend_rects")
             .data(subgroups)
             .enter()
             .append("rect")
-                .attr("fill", function(d) { return color(d.key); })
+                .attr("fill", function(d) { return color(d.value); })
                 .attr("x", width + 20)
                 .attr("y", function(d, i) { return margin.top + i * 25 })
                 .attr("height", 10)
                 .attr("width", 10)
+        // Legend labels
+        svg.selectAll("legend_labels")
+            .data(subgroups)
+            .enter()
+            .append("text")
+                .style("fill", function (d) { return color(d.value) })
+                .attr("x", width + 30)
+                .attr("y", function (d, i) { return margin.top + i * 25 })
+                .text(function (d) { return d })
+                .attr("text-anchor", "left")
+                .style("alignment-baseline", "middle")
 
 
         // Normalize the data -> sum of each group must be 100!
@@ -266,15 +279,15 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.35,
+                    width: width * 0.3,
                     height: height * 0.2,
                 },
                 // ROI coords
                 x: width * 0.015,
                 y: height * 0.0125,
                 // label/text coords
-                dy: 225,
-                dx: 225,
+                dy: 125,
+                dx: 180,
                 data: { color: ["white"]}
             },
             {
