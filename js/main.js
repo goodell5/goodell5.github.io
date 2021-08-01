@@ -236,21 +236,34 @@ function setupSVG() {
                     label: "Not many elderly people at or below normal weight",
                     title: "Fewer Elders"
                 },
-                type: d3.annotationCalloutCircle,
+                // type: d3.annotationCalloutCircle,
+                // subject: {
+                //     radius: 100,
+                //     radiusPadding: 10, // white space around circle before connector
+                // },
+                // // ROI/subject x/y
+                // x: width * 0.15,
+                // y: height * 0.1,
+                // // offset label/text from ROI
+                // dy: 0,
+                // dx: 110,
+
+                // data: {
+                //     color: ["white"]
+                // }
+                type: d3.annotationCalloutRect,
                 subject: {
-                    radius: 100,
-                    radiusPadding: 10, // white space around circle before connector
+                    // ROI width/height
+                    width: width * 0.25,
+                    height: height * 0.15,
                 },
-                // ROI/subject x/y
+                // ROI coords
                 x: width * 0.15,
                 y: height * 0.1,
-                // offset label/text from ROI
-                dy: 0,
-                dx: 110,
-
-                data: {
-                    color: ["white"]
-                }
+                // label/text coords
+                dy: 225,
+                dx: 225,
+                data: { color: ["white"]}
             },
             {
                 note: {
