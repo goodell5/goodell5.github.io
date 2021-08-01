@@ -182,24 +182,18 @@ function setupSVG() {
             var subgroupValue = d.data[subgroupName];
             if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
                 tooltip
-                .transition()
-                    .duration(50)
-                    .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1);
+                .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                .style("opacity", 1)
             }
             else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
                 tooltip
-                .transition()
-                    .duration(50)
-                    .html("Ages: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1);
+                .html("Ages: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                .style("opacity", 1)
             }
             else {
                 tooltip
-                .transition()
-                    .duration(50)
-                    .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1);
+                .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
+                .style("opacity", 1)
             }
             
             // ----------------
