@@ -209,6 +209,28 @@ function setupSVG() {
 
     // NEEDS WORK
     function plotStackedBarTransition(data) {
+        // Add X axis
+        var x = d3.scaleBand()
+            .domain(groups)
+            .range([0, width])
+            .padding([0.2])
+        svg.append("g")
+            // .attr("class", "axisText")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x).tickSizeOuter(0))
+            .selectAll("text")
+                .attr("transform", "translate(-10,0)rotate(-45)")
+                .style("text-anchor", "end");
+
+        // Add Y axis
+        var y = d3.scaleLinear()
+            .domain([0, 100])
+            .range([ height, 0 ]);
+        svg.append("g")
+            // .attr("class", "axis")
+            // .attr("class", "Y-axis")
+            .call(d3.axisLeft(y));
+
         // variable u: map data to existing bars
         var u = svg.selectAll("rect")
             .data(data)
