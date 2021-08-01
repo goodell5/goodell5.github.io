@@ -231,7 +231,7 @@ function setupSVG() {
         
         // NEEDS WORK (once slide 2 is ready)
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
-            annotation_1 = [{
+            annotations = [{
                 note: {
                     label: "Not many people at or below normal weight",
                     title: "Age Annotation Title"
@@ -241,14 +241,15 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                color: ["white"],
-                x: width * 0.1,
-                y: height * 0.1,
-                dy: 0,
-                dx: 150
-            }]
-
-            annotation_2 = [{
+                data: {
+                    color: ["white"],
+                    x: width * 0.1,
+                    y: height * 0.1,
+                    dy: 0,
+                    dx: 150
+                }
+            },
+            {
                 note: {
                     label: "More people ages 20-29 are obese than at or below normal weight",
                     title: "Age Annotation Title"
@@ -259,13 +260,16 @@ function setupSVG() {
                     width: width * 0.83,
                     height: height * 0.5,
                 },
-                color: ["white"],
-                // ROI coords
-                x: width * 0.015,
-                y: height * 0.015,
-                // label/text coords
-                dy: 250,
-                dx: 670
+                data:
+                {
+                    color: ["white"],
+                    // ROI coords
+                    x: width * 0.015,
+                    y: height * 0.015,
+                    // label/text coords
+                    dy: 250,
+                    dx: 670
+                }
             }]
         }
         else {
@@ -289,27 +293,14 @@ function setupSVG() {
                 dx: 670
             }]
         }
-        // Add annotations to the chart
-        // 'Age' slide contains 2 annotations
-        if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-            const makeAnnotations = d3.annotation()
-                .textWrap(265) // changes text wrap width
-                .annotations(annotation_1)
-                .annotations(annotation_2)
-            svg.append('g')
-                .attr('class', 'annotation-group')
-                .call(makeAnnotations)
-        }
-        else {
-            const makeAnnotations = d3.annotation()
-                .textWrap(265) // changes text wrap width
-                .annotations(annotations)
-            svg.append('g')
-            .attr('class', 'annotation-group')
-            .call(makeAnnotations)
-        }
+        // Add annotation to the chart
+        const makeAnnotations = d3.annotation()
+            .textWrap(265) // changes text wrap width
+            .annotations(annotations)
 
-
+        svg.append('g')
+        .attr('class', 'annotation-group')
+        .call(makeAnnotations)
     }
 
     loadAllData();
