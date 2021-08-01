@@ -291,12 +291,14 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutCircle,
                 subject: {
-                    radius: 80, // circle radius
+                    radius: 100,
                     radiusPadding: 20, // white space around circle befor connector
                 },
-                x: width * 0.125,
-                y: height * 0.25,
-                dy: -30,
+                // ROI/subject x/y
+                x: width * 0.25,
+                y: height * 0.025,
+                // offset label/text from ROI
+                dy: 30,
                 dx: 150,
 
                 data: {
@@ -311,11 +313,11 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.25,
-                    height: height * 0.8,
+                    width: width * 0.33,
+                    height: height * 0.85,
                 },
                 // ROI coords
-                x: width * 0.75,
+                x: width * 0.7,
                 y: height * 0.015,
                 // label/text coords
                 dy: 250,
