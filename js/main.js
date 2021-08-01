@@ -245,7 +245,7 @@ function setupSVG() {
                     color: ["white"],
                     x: width * 0.25,
                     y: height * 0.35,
-                    dy: 30,
+                    dy: -30,
                     dx: 150
                 }
             },
@@ -268,7 +268,7 @@ function setupSVG() {
                     y: height * 0.4,
                     // label/text coords
                     dy: 250,
-                    dx: 500
+                    dx: 670
                 }
             }]
         }
