@@ -101,7 +101,8 @@ function setupSVG() {
             .data(subgroups)
             .enter()
             .append("rect")
-                .attr("fill", function(d) { return color(d.value); })
+                console.log(function(d) { return color(d.key); })
+                .attr("fill", function(d) { return color(d.key); })
                 .attr("x", width + 20)
                 .attr("y", function(d, i) { return margin.top + i * 25 })
                 .attr("height", 10)
@@ -279,7 +280,7 @@ function setupSVG() {
                 type: d3.annotationCalloutRect,
                 subject: {
                     // ROI width/height
-                    width: width * 0.3,
+                    width: width * 0.275,
                     height: height * 0.2,
                 },
                 // ROI coords
@@ -287,7 +288,7 @@ function setupSVG() {
                 y: height * 0.0125,
                 // label/text coords
                 dy: 125,
-                dx: 180,
+                dx: 100,
                 data: { color: ["white"]}
             },
             {
