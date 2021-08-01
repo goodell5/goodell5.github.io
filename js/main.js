@@ -185,21 +185,21 @@ function setupSVG() {
                 .transition()
                     .duration(50)
                     .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1)
+                    .style("opacity", 1);
             }
             else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
                 tooltip
                 .transition()
                     .duration(50)
                     .html("Ages: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1)
+                    .style("opacity", 1);
             }
             else {
                 tooltip
                 .transition()
                     .duration(50)
                     .html("Daily Tech Use: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
-                    .style("opacity", 1)
+                    .style("opacity", 1);
             }
             
             // ----------------
