@@ -231,6 +231,59 @@ function setupSVG() {
         
         // NEEDS WORK (once slide 2 is ready)
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
+            // const annotations = [{
+            //     note: { label: "Steve Jobs Returns" },
+            //     subject: {
+            //       y1: margin.top,
+            //       y2: height - margin.bottom
+            //     },
+            //     y: margin.top,
+            //     data: { x: "7/9/1997"} //position the x based on an x scale
+            //   },
+            //   {
+            //     note: { label: "iMac Release" },
+            //     subject: {
+            //       y1: margin.top,
+            //       y2: height - margin.bottom
+            //     },
+            //     y: margin.top,
+            //     data: { x: "8/15/1998"}
+            //   },
+            //   {
+            //     note: { label: "iPod Release"},
+            //     subject: {
+            //       y1: margin.top,
+            //       y2: height - margin.bottom
+            //     },
+            //     y: margin.top,
+            //     data: { x: "10/23/2001"}
+            //   },
+            //   {
+            //     note: { label: "Stock Split 2:1", 
+            //       lineType:"none", 
+            //       orientation: "leftRight", 
+            //       "align": "middle" },
+            //     className: "anomaly",
+            //     type: d3.annotationCalloutCircle,
+            //     subject: { radius: 35 },
+            //     data: { x: "6/21/2000", y: 76},
+            //     dx: 40
+            //   },
+            //   {
+            //     note: { label: "Above $100", wrap: 100, },
+            //     className: "above",
+            //     disable: ["connector"],
+            //     subject: {
+            //       x1: x( new Date('10/1/1999')),
+            //       x2: x( new Date('8/1/2000'))
+            //     },
+            //     x: x( new Date('10/1/1999')),
+            //     dx: -30,
+            //     data: { y: 100}
+            //   }
+    
+            //   ]
+
             annotations = [{
                 note: {
                     label: "Not many people at or below normal weight",
@@ -241,12 +294,14 @@ function setupSVG() {
                     radius: 80, // circle radius
                     radiusPadding: 20, // white space around circle befor connector
                 },
+                x: width * 0.75,
+                y: height * 0.35,
+                dy: -30,
+                dx: 150,
+                
                 data: {
                     color: ["white"],
-                    x: width * 0.75,
-                    y: height * 0.35,
-                    dy: -30,
-                    dx: 150
+
                 }
             },
             {
