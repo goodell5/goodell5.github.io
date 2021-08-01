@@ -50,8 +50,8 @@ function setupSVG() {
             firstRun = false;
         }
         else {
-            // plotStackedBarTransition(data);
-            update(data);
+            plotStackedBarTransition(data);
+            // update(data);
         }
         
 
