@@ -136,7 +136,7 @@ function setupSVG() {
             .append("text")
                 .style("fill", "white")
                 .attr("x", width + 40)
-                .attr("y", margin.top - 30)
+                .attr("y", margin.top + 5)
                 .text(legend_title)
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
