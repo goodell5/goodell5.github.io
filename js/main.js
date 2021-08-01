@@ -21,23 +21,23 @@ function setupSVG() {
     document.getElementById("my_dataviz").setAttribute("current-slide", slide);
 
     async function loadAllData() {
-        if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-            data = await d3.csv("/data/obesity.csv");
-        }
-        else {
-            data = await d3.csv("/data/obesity_groups_" + slide + ".csv");
-        }
+        // if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
+        //     data = await d3.csv("/data/obesity.csv");
+        // }
+        // else {
+        data = await d3.csv("/data/obesity_groups_" + slide + ".csv");
+        // }
         loadPageData();
     }
 
     // NEED TO FINISH
     function loadPageData() {
-        console.log("CLICK! Loading new data...")
+        // console.log("CLICK! Loading new data...")
 
         // FIX BOTH PLOTS
         // plot initial data (plotInitData)
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
-            // plotScatter(data);
+            plotScatter(data);
         }
         else {
             plotStackedBar(data);
@@ -80,6 +80,11 @@ function setupSVG() {
             var color = d3.scaleOrdinal()
                 .domain(subgroups)
                 .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c'])
+        }
+        else if (slide == "age") {
+            var color = d3.scaleOrdinal()
+                .domain(subgroups)
+                .range(['#fe4644','#ff881a', '#33a3ff', '#86d59c', "#3cfdea", "#81adff"])
         }
         else if (slide == "tech") {
             var color = d3.scaleOrdinal()
@@ -180,7 +185,7 @@ function setupSVG() {
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave)
 
-        addAnnotations();   // fix this function
+        addAnnotationsStackedBar();   // fix this function
     }
 
     // NEEDS WORK
@@ -192,8 +197,8 @@ function setupSVG() {
     function plotScatter() {
 
     }
-    // NEEDS WORK
-    function addAnnotations() {
+
+    function addAnnotationsStackedBar() {
         svg.selectAll(".annotation-group").remove()
 
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
@@ -217,6 +222,8 @@ function setupSVG() {
                 dx: 670
             }]
         }
+        
+        // NEEDS WORK (once slide 2 is ready)
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
             annotations = [{
                 note: {
