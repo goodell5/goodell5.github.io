@@ -238,7 +238,7 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutCircle,
                 subject: {
-                    radius: 90,
+                    radius: 80,
                     radiusPadding: 10, // white space around circle before connector
                 },
                 // ROI/subject x/y
@@ -255,7 +255,7 @@ function setupSVG() {
             {
                 note: {
                     label: "More people ages 20-29 are obese than at or below normal weight",
-                    title: "Age Annotation Title"
+                    title: "Obesity in Youth"
                 },
                 type: d3.annotationCalloutRect,
                 subject: {
