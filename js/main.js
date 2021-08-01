@@ -295,11 +295,11 @@ function setupSVG() {
                     radiusPadding: 20, // white space around circle befor connector
                 },
                 // ROI/subject x/y
-                x: width * 0.17,
+                x: width * 0.15,
                 y: height * 0.11,
                 // offset label/text from ROI
-                dy: 30,
-                dx: 125,
+                dy: 0,
+                dx: 100,
 
                 data: {
                     color: ["white"]
@@ -317,7 +317,7 @@ function setupSVG() {
                     height: height * 0.88,
                 },
                 // ROI coords
-                x: width * 0.7125,
+                x: width * 0.71,
                 y: height * 0.015,
                 // label/text coords
                 dy: 225,
