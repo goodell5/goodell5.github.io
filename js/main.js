@@ -238,7 +238,7 @@ function setupSVG() {
                 },
                 type: d3.annotationCalloutCircle,
                 subject: {
-                    radius: 90,
+                    radius: 100,
                     radiusPadding: 10, // white space around circle before connector
                 },
                 // ROI/subject x/y
