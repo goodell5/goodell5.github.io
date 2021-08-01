@@ -130,9 +130,10 @@ function setupSVG() {
                 .style("alignment-baseline", "middle")
                 .style("font-size", width * 0.015)
         // Legend title
-        svg.selectAll("legend_labels_title")
-            // .data(subgroups)
-            // .enter()
+        // svg.selectAll("legend_labels_title")
+        //     .data(subgroups)
+        //     .enter()
+        svg.append("g")
             .append("text")
                 .style("fill", "white")
                 .attr("x", width + 40)
