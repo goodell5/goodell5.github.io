@@ -180,6 +180,9 @@ function setupSVG() {
         var mouseover = function(d) {
             var subgroupName = d3.select(this.parentNode).datum().key;
             var subgroupValue = d.data[subgroupName];
+            console.log(groups)
+            console.log(data.obesity_level)
+            console.log(obesity_level)
             if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
                 tooltip
                 .html("Weekly Exercise: " + subgroupName + "<br>" + formatSuffixDecimal2(subgroupValue) + "% of individuals")
