@@ -202,7 +202,7 @@ function setupSVG() {
             // Reduce opacity of all rect to 0.2
             d3.selectAll(".myRect").style("opacity", 0.2)
             // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-            d3.selectAll(".myRect "+subgroupName)
+            d3.selectAll("#"+subgroupName)
                 .style("opacity", 1)
         }
         var mousemove = function(d) {
