@@ -2,7 +2,7 @@ var slide = "exercise"
 // var firstRun = true;
 
 // set the dimensions and margins of the graph
-var margin = {top: 40, right: 200, bottom: 80, left: 100},
+var margin = {top: 60, right: 200, bottom: 80, left: 100},
     width = 960 - margin.left - margin.right,
     height = 600 - margin.top - margin.bottom;
 
@@ -312,7 +312,7 @@ function setupSVG() {
                 y: height * 0.07,
                 // label/text coords
                 dy: 125,
-                dx: 160,
+                dx: 200,
                 data: { color: ["white"]}
             },
             {
@@ -327,7 +327,7 @@ function setupSVG() {
                     height: height * 0.88,
                 },
                 // ROI coords
-                x: width * 0.86,
+                x: width * 0.865,
                 y: height * 0.11,
                 // label/text coords
                 dy: 225,
