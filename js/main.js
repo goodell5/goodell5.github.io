@@ -231,9 +231,9 @@ function setupSVG() {
         
         // NEEDS WORK (once slide 2 is ready)
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
-            annotations = [{
+            annotation_1 = [{
                 note: {
-                    label: "Lorem Ipsum. Lorem Ipsum",
+                    label: "Not many people at or below normal weight",
                     title: "Age Annotation Title"
                 },
                 type: d3.annotationCalloutCircle,
@@ -246,6 +246,26 @@ function setupSVG() {
                 y: height * 0.1,
                 dy: 0,
                 dx: 150
+            }]
+
+            annotation_2 = [{
+                note: {
+                    label: "More people ages 20-29 are obese than at or below normal weight",
+                    title: "Age Annotation Title"
+                },
+                type: d3.annotationCalloutRect,
+                subject: {
+                    // ROI width/height
+                    width: width * 0.83,
+                    height: height * 0.5,
+                },
+                color: ["white"],
+                // ROI coords
+                x: width * 0.015,
+                y: height * 0.015,
+                // label/text coords
+                dy: 250,
+                dx: 670
             }]
         }
         else {
