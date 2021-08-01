@@ -50,6 +50,12 @@ text {
 .annotation-note-title,.annotation-note-label {
     fill:white;
 }
+:root {
+    --annotation-context-color: white;
+}
+.annotation path {
+    stroke: var(--annotation-context-color);
+  }
 /* .annotation-note-label {
     fill:white;
 } */
