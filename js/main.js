@@ -43,7 +43,16 @@ function setupSVG() {
         // else {
         //     plotStackedBar(data);
         // }
-        plotStackedBar(data);
+        
+        // plotStackedBar(data);
+        if (firstRun) {
+            plotStackedBar(data);
+            firstRun = false;
+        }
+        else {
+            plotStackedBarTransition(data);
+        }
+        
 
 
         // plot transitions (plotDataWithTransitions(newData))
