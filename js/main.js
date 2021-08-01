@@ -124,7 +124,7 @@ function setupSVG() {
             .append("text")
                 .style("fill", function (d, i) { return color(subgroups[i]); })
                 .attr("x", width + 40)
-                .attr("y", function (d, i) { return margin.top + i * 30 })
+                .attr("y", function (d, i) { return margin.top + i * 25 })
                 .text(function (d) { return d })
                 .attr("text-anchor", "left")
                 .style("alignment-baseline", "middle")
