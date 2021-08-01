@@ -197,14 +197,13 @@ function setupSVG() {
             }
             
             // ----------------
-            // Highlight a specific subgroup when hovered (BROKEN)
+            // Highlight a specific subgroup when hovered
             // ----------------
             // Reduce opacity of all rect to 0.2
             d3.selectAll(".myRect").style("opacity", 0.2)
             // Highlight all rects of this subgroup with opacity 0.8. It is possible to select them since they have a specific class = their name.
-            // d3.selectAll("."+subgroupName)
-            d3.select(this.parentNode)
-                .style("opacity", 1)
+            // d3.selectAll("."+subgroupName) <--- BROKEN
+            d3.select(this.parentNode).style("opacity", 1)
         }
         var mousemove = function(d) {
             tooltip
@@ -214,7 +213,7 @@ function setupSVG() {
         var mouseleave = function(d) {
             tooltip
                 .style("opacity", 0);
-            // Back to normal opacity: 0.8 (BROKEN with highlight feature above)
+            // Back to normal opacity: 0.8
             d3.selectAll(".myRect")
                 .style("opacity",0.8)
         }
@@ -254,8 +253,7 @@ function setupSVG() {
 
     function addAnnotationsStackedBar() {
         var svg = d3.select("#scene-1-svg");
-
-        console.log("addAnnotationsStackedBar is CALLED!")
+        // console.log("addAnnotationsStackedBar is CALLED!")
         svg.selectAll(".annotation-group").remove()
 
         if (document.getElementById("my_dataviz").getAttribute("current-slide") == "exercise") {
