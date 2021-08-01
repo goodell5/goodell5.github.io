@@ -289,10 +289,19 @@ function setupSVG() {
                 dx: 670
             }]
         }
-        // Add annotation to the chart
-        const makeAnnotations = d3.annotation()
+        // Add annotations to the chart
+        // 'Age' slide contains 2 annotations
+        if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age") {
+            const makeAnnotations = d3.annotation()
+                .textWrap(265) // changes text wrap width
+                .annotations(annotation_1)
+                .annotations(annotation_2)
+        }
+        else {
+            const makeAnnotations = d3.annotation()
             .textWrap(265) // changes text wrap width
             .annotations(annotations)
+        }
 
         svg.append('g')
         .attr('class', 'annotation-group')
