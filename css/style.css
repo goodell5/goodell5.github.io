@@ -1,6 +1,5 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* font-family: "avenir next", Arial, sans-serif; */
     margin: 0;
     background: rgb(49, 53, 55);
 }
@@ -29,11 +28,6 @@ text {
 .domain {
     stroke:white;
 }
-
-/* X and Y axis */
-/* .axis {
-    font: 20px sans-serif;
-} */
 
 .axisText {
     font: 20px sans-serif;
