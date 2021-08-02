@@ -22,10 +22,7 @@ function setupSVG() {
     }
 
     function clearOldData() {
-        d3.select("#scene-1-svg").remove(); // doesn't remove anything
-        // d3.selectAll("svg").remove(); // removes everything 
-        // d3.selectAll("g").remove();
-
+        d3.select("#scene-1-svg").remove();
     }
 
     // NEED TO FINISH
@@ -41,7 +38,7 @@ function setupSVG() {
         else {
             plotStackedBar(data);
         }
-
+        // NEEDS WORK
         // plot transitions (plotDataWithTransitions(newData))
     }
 
@@ -240,7 +237,7 @@ function setupSVG() {
             .on("mousemove", mousemove)
             .on("mouseleave", mouseleave)
 
-        addAnnotationsStackedBar();   // fix this function
+        addAnnotationsStackedBar();
     }
 
     // NEEDS WORK
@@ -278,9 +275,7 @@ function setupSVG() {
                 dy: 250,
                 dx: 670
             }]
-        }
-        
-        // NEEDS WORK (once slide 2 is ready)
+        }        
         else if (document.getElementById("my_dataviz").getAttribute("current-slide") == "age")  {
             annotations = [{
                 note: {
